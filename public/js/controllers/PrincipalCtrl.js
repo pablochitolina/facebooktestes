@@ -45,12 +45,17 @@
     };
 
     $scope.shareOnFacebook = function () {
-        FB.ui({
+       /* FB.ui({
+  method: 'feed',
+  link: 'https://developers.facebook.com/docs/',
+  caption: 'An example caption',
+}, function(response){});
+       */ FB.ui({
             method: 'feed',
             name: 'globalFacebookShareObject.name',
-            link: 'www.facebooktestes.com.br',
+            link: 'http://www.facebooktestes.com.br',
             caption: 'R$ ' + 'globalFacebookShareObject.caption',
-            picture: 'https://www.sagesponline.com.br/img/fbshare.png',
+            picture: 'http://www.facebooktestes.com.br/api/imagem/'+$scope.idUserFB + '_' + teste + '.png',
             description: 'globalFacebookShareObject.description'
         }, function (response) {
             if (response && response.post_id) { }
