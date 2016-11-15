@@ -52,11 +52,11 @@
 }, function(response){});
        */ FB.ui({
             method: 'feed',
-            name: 'globalFacebookShareObject.name',
+            name: 'Facebook Testes',
             link: 'http://www.facebooktestes.com.br',
-            caption: 'R$ ' + 'globalFacebookShareObject.caption',
-            picture: 'http://www.facebooktestes.com.br/api/imagem/'+$scope.idUserFB + '_' + teste + '.png',
-            description: 'globalFacebookShareObject.description'
+            caption: 'www.facebooktestes.com.br',
+            picture: 'http://www.facebooktestes.com.br/api/imagem/'+$scope.user.idUserFB + '_' + teste + '.png',
+            description: 'Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
         }, function (response) {
             if (response && response.post_id) { }
             else { }
