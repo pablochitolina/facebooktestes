@@ -47,7 +47,7 @@ router.route('/postImg')
 router.route('/postUser')
   .post(userController.postUser);
 
-router.route('/postUserAdmin').post(userController.postUserAdmin);
+//router.route('/postUserAdmin').post(userController.postUserAdmin);
 
 //router.route('/addTestUser').post(userController.addTestUser);
 
