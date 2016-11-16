@@ -126,7 +126,7 @@
             link: 'http://www.facebooktestes.com.br/#/principal/' + $scope.testeSelecionado,
             caption: 'www.facebooktestes.com.br',
             picture: 'http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + $scope.testeSelecionado + '.png',
-            description: $scope.resumo
+            description: $scope.resumo + '. Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
         }, function (response) {
             if (response && response.post_id) { }
             else { }
