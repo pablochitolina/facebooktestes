@@ -14,7 +14,7 @@ app.service('User', function () {
     email : '',
     birthday : '',
     gender : '',
-    picture : 'http://placehold.it/320x320'
+    picture : '/images/desconhecido.jpg'
   };
 
   return {

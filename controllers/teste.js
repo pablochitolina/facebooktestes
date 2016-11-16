@@ -1,47 +1,65 @@
 var Teste = require('../models/teste');
+var UserAdmin = require('../models/useradmin');
 
 exports.postTeste = function (req, res) {
 
-  Teste.findOne({ nomeTeste: req.body.nomeTeste }, function (err, teste) {
+  UserAdmin.findOne({ email: req.headers.email }, function (err, userSeguro) {
     if (err)
       return res.send(err);
+    if (!userSeguro)
+      return res.json({ message: 'notauthorized' });
 
-    if (!teste) {
+    if (userSeguro.id === req.headers.id) {
 
-      var newTeste = new Teste({
-        nomeTeste: req.body.nomeTeste,
-        pergunta: req.body.pergunta,
-        resumo: req.body.resumo,
-        respostas: [{
-          desc1: req.body.desc1,
-          desc2: req.body.desc2,
-          desc3: req.body.desc3,
-          desc4: req.body.desc4
-        }]
-      });
-
-      newTeste.save(function (err) {
+      Teste.findOne({ nomeTeste: req.body.nomeTeste }, function (err, teste) {
         if (err)
           return res.send(err);
-        return res.json({ message: 'postNovoTesteSuccess', teste: newTeste });
+
+        if (!teste) {
+
+          var newTeste = new Teste({
+            nomeTeste: req.body.nomeTeste,
+            pergunta: req.body.pergunta,
+            resumo: req.body.resumo,
+            respostas: [{
+              desc1: req.body.desc1,
+              desc2: req.body.desc2,
+              desc3: req.body.desc3,
+              desc4: req.body.desc4
+            }]
+          });
+
+          newTeste.save(function (err) {
+            if (err)
+              return res.send(err);
+            return res.json({ message: 'postNovoTesteSuccess', teste: newTeste });
+          });
+
+        } else {
+
+          teste.respostas.push({
+            desc1: req.body.desc1,
+            desc2: req.body.desc2,
+            desc3: req.body.desc3,
+            desc4: req.body.desc4
+          });
+
+          teste.save();
+
+          return res.json({ message: 'postAddTesteSuccess', teste: teste });
+
+        }
+
       });
 
     } else {
-
-      teste.respostas.push({
-        desc1: req.body.desc1,
-        desc2: req.body.desc2,
-        desc3: req.body.desc3,
-        desc4: req.body.desc4
-      });
-
-      teste.save();
-
-      return res.json({ message: 'postAddTesteSuccess', teste: teste });
-
+      return res.json({ message: 'notauthorized' });
     }
 
   });
+
+
+
 
 };
 
@@ -72,13 +90,27 @@ exports.editTeste = function (req, res) {
 
 exports.getTestes = function (req, res) {
 
-  Teste.find({}).select('pergunta').select('resumo').select('nomeTeste').exec( function (err, testes) {
+  UserAdmin.findOne({ email: req.headers.email }, function (err, userSeguro) {
     if (err)
       return res.send(err);
-    if (testes.length == 0)
-      return res.json({ message: 'noteste' });
-    // Success
-    return res.json({ message: 'success', testes: testes });
+    if (!userSeguro)
+      return res.json({ message: 'notauthorized' });
+
+    if (userSeguro.id === req.headers.id) {
+
+      Teste.find({}).select('pergunta').select('resumo').select('nomeTeste').exec(function (err, testes) {
+        if (err)
+          return res.send(err);
+        if (testes.length == 0)
+          return res.json({ message: 'noteste' });
+        // Success
+        return res.json({ message: 'success', testes: testes });
+
+      });
+
+    } else {
+      return res.json({ message: 'notauthorized' });
+    }
 
   });
 
@@ -86,7 +118,7 @@ exports.getTestes = function (req, res) {
 
 exports.getTestePergunta = function (req, res) {
 
-  Teste.findOne({nomeTeste: req.headers.nome}).select('pergunta').select('resumo').select('nomeTeste').exec( function (err, teste) {
+  Teste.findOne({ nomeTeste: req.headers.nome }).select('pergunta').select('resumo').select('nomeTeste').exec(function (err, teste) {
     if (err)
       return res.send(err);
     if (!teste)

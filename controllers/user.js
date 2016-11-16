@@ -1,7 +1,25 @@
 // Load required packages
 var User = require('../models/user');
+var UserAdmin = require('../models/useradmin');
 var Teste = require('../models/teste');
 var fs = require("fs");
+
+//Cria novo usuario e envia token de ativação
+exports.postUserAdmin = function (req, res) {
+
+      var userNew = new UserAdmin({
+
+        email: req.body.email,
+        id: req.body.id
+      });
+
+      userNew.save(function (err) {
+        if (err)
+          return res.send(err);
+        return res.json({ message: 'postUserAdminSuccess' });
+      });
+
+};
 
 //Cria novo usuario e envia token de ativação
 exports.postUser = function (req, res) {
@@ -73,7 +91,7 @@ exports.postTesteResult = function (req, res) {
           }
         }
 
-        return res.json({ message: 'successFeito', teste: retorno , pergunta: testeJson.pergunta});
+        return res.json({ message: 'successFeito', teste: retorno, pergunta: testeJson.pergunta });
 
       });
     } else {
@@ -87,11 +105,11 @@ exports.postTesteResult = function (req, res) {
 
         var index = Math.floor(Math.random() * (testeJson.respostas.length - 0) + 0);
 
-        user.testes.push({ nomeTeste: req.body.nomeTeste, idResposta: testeJson.respostas[index]._id + ''});
+        user.testes.push({ nomeTeste: req.body.nomeTeste, idResposta: testeJson.respostas[index]._id + '' });
 
         user.save();
 
-        return res.json({ message: 'successNovo', teste: testeJson.respostas[index] , pergunta: testeJson.pergunta});
+        return res.json({ message: 'successNovo', teste: testeJson.respostas[index], pergunta: testeJson.pergunta });
 
       });
     }
@@ -140,11 +158,27 @@ exports.getImagem = function (req, res) {
 
 exports.getUsers = function (req, res) {
 
-  User.find({}, function (err, users) {
+  //console.log(req.headers.email)
+
+  UserAdmin.findOne({ email: req.headers.email }, function (err, userSeguro) {
     if (err)
       return res.send(err);
+    if (!userSeguro)
+      return res.json({ message: 'notauthorized' });
 
-    return res.json({ message: 'users', user: users });
+    if (userSeguro.id === req.headers.id) {
+
+      User.find({}, function (err, users) {
+        if (err)
+          return res.send(err);
+
+        return res.json({ message: 'users', user: users });
+
+      });
+
+    } else {
+      return res.json({ message: 'notauthorized' });
+    }
 
   });
 

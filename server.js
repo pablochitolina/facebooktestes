@@ -14,7 +14,7 @@ var proxy = require('html2canvas-proxy');
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, nome");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, nome, email, id");
   next();
 });
 
@@ -46,6 +46,8 @@ router.route('/postImg')
 
 router.route('/postUser')
   .post(userController.postUser);
+
+//router.route('/postUserAdmin').post(userController.postUserAdmin);
 
 //router.route('/addTestUser').post(userController.addTestUser);
 

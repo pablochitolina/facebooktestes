@@ -71,16 +71,19 @@
                     $timeout(function () {
                         $scope.$apply();
                     });
-                    $scope.etapa = 'Verificando dados...';
+
+                    $timeout(function () {
+                        $scope.etapa = 'Coletando dados...';
+                    }, 500);
 
                     $timeout(function () {
                         $scope.etapa = 'Analizando perfil...';
-                    }, 2000);
+                    }, 1500);
 
                     $timeout(function () {
                         $scope.etapa = 'Calculando...';
                         salvaImagem($scope.testeSelecionado);
-                    }, 4000);
+                    }, 2500);
 
                 } else {
                     console.log(res.data.message)
@@ -111,7 +114,7 @@
 
     }
     $scope.shareOnFacebook = function () {
-        console.log('http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + $scope.testeSelecionado + '.png')
+        //console.log('http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + $scope.testeSelecionado + '.png')
         $scope.mostraOverlay = false;
         $scope.concluido = false;
         $scope.mostraShare = false;
@@ -129,7 +132,7 @@
     }
 
     function salvaImagem(nomeTeste) {
-
+        
 
         var element = document.getElementById(nomeTeste);
         element.style.display = "block";
@@ -146,12 +149,12 @@
                 })
                     .success(function (data) {
                         //console.log(data.message)
-
                         $timeout(function () {
                             $scope.etapa = 'Teste realizado com sucesso!';
                             $scope.concluido = true;
                             $scope.mostraShare = true;
-                        }, 2000);
+                        }, 1000);
+
                     })
                     .error(function (data) {
                         console.log(data.erro);
