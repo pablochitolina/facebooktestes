@@ -3,13 +3,13 @@ var UserAdmin = require('../models/useradmin');
 
 exports.postTeste = function (req, res) {
 
-  UserAdmin.findOne({ email: req.headers.email }, function (err, userSeguro) {
+  UserAdmin.findOne({ email: req.body.email }, function (err, userSeguro) {
     if (err)
       return res.send(err);
     if (!userSeguro)
       return res.json({ message: 'notauthorized' });
 
-    if (userSeguro.id === req.headers.id) {
+    if (userSeguro.id === req.body.id) {
 
       Teste.findOne({ nomeTeste: req.body.nomeTeste }, function (err, teste) {
         if (err)
@@ -57,9 +57,6 @@ exports.postTeste = function (req, res) {
     }
 
   });
-
-
-
 
 };
 

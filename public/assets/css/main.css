@@ -131,6 +131,7 @@
 	background-image: url("../../images/back01.png");
 	width: 600px;
 	height: 315px;
+	overflow-y:scroll;
 }
 
 .borda-2px {

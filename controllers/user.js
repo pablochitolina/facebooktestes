@@ -5,7 +5,7 @@ var Teste = require('../models/teste');
 var fs = require("fs");
 
 //Cria novo usuario e envia token de ativação
-exports.postUserAdmin = function (req, res) {
+/*exports.postUserAdmin = function (req, res) {
 
       var userNew = new UserAdmin({
 
@@ -19,7 +19,7 @@ exports.postUserAdmin = function (req, res) {
         return res.json({ message: 'postUserAdminSuccess' });
       });
 
-};
+};*/
 
 //Cria novo usuario e envia token de ativação
 exports.postUser = function (req, res) {
