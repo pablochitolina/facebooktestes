@@ -1,6 +1,36 @@
-﻿app.controller('PrincipalCtrl', function ($scope, $timeout, ModalService, $anchorScroll, $location, User, $http) {
+﻿app.controller('PrincipalCtrl', function ($scope, $window, $timeout, ModalService, $anchorScroll, $location, User, $http, $routeParams) {
 
-    var teste = 'mantra2017';
+    var testeSelecionado = '';
+    $scope.temTeste = false;
+    $scope.perguntaTeste = '';
+    $scope.etapa = '';
+    $scope.concluido = false;
+    $scope.mostraOverlay = false;
+    var logadoFace = false;
+
+    if ($routeParams.teste != undefined) {
+        $scope.temTeste = true;
+
+        $http.defaults.headers.common["Content-Type"] = 'application/json';
+        $http.defaults.headers.common["nome"] = $routeParams.teste;
+
+        $http.get('/api/getTestePergunta')
+            .success(function (data, status, headers, config) {
+
+                $scope.perguntaTeste = data.teste.pergunta;
+                //console.log(JSON.stringify(data.teste))
+
+
+                $timeout(function () {
+                    $scope.$apply();
+                });
+            })
+            .error(function (data, status, headers, config) {
+
+                console.log(data.message)
+            });
+
+    }
 
     $scope.pergunta = '';
     $scope.desc1 = '';
@@ -8,54 +38,73 @@
     $scope.desc3 = '';
     $scope.desc4 = '';
 
-    $scope.preview = function () {
+    $scope.calculaTeste = function (teste) {
+        if (logadoFace) {
+            $scope.etapa = 'Enviando informações...';
+            $scope.mostraOverlay = true;
 
-        $http.defaults.headers.post["Content-Type"] = 'application/json';
-        $http.post('/api/postTesteResult', {
-            nomeTeste: teste,
-            idUserFB: $scope.user.idUserFB
-        }).then(function (res) {
-            console.log(res.data.message)
-            if (res.data.message === 'successFeito' || res.data.message === 'successNovo') {
-
-                $scope.pergunta = res.data.pergunta;
-                $scope.desc1 = res.data.teste.desc1;
-                $scope.desc2 = res.data.teste.desc2;
-                $scope.desc3 = res.data.teste.desc3;
-                $scope.desc4 = res.data.teste.desc4;
-
-                $timeout(function () {
-                    $scope.$apply();
-                });
-
-                $timeout(function () {
-                    salvaImagem(teste);
-                }, 1000);
-
+            if (teste === 'url') {
+                testeSelecionado = $routeParams.teste;
             } else {
-                console.log(res.data.message)
+                testeSelecionado = teste;
             }
 
-        }, function (err) {
-            // Error
-            console.log(err);
-        });
+
+            $http.defaults.headers.post["Content-Type"] = 'application/json';
+            $http.post('/api/postTesteResult', {
+                nomeTeste: testeSelecionado,
+                idUserFB: $scope.user.idUserFB
+            }).then(function (res) {
+                //console.log(res.data.message)
+                if (res.data.message === 'successFeito' || res.data.message === 'successNovo') {
+
+                    $scope.pergunta = res.data.pergunta;
+                    $scope.desc1 = res.data.teste.desc1;
+                    $scope.desc2 = res.data.teste.desc2;
+                    $scope.desc3 = res.data.teste.desc3;
+                    $scope.desc4 = res.data.teste.desc4;
+
+                    console.log(JSON.stringify(res.data))
+
+                    $timeout(function () {
+                        $scope.$apply();
+                    });
+                    $scope.etapa = 'Verificando dados...';
+
+                    $timeout(function () {
+                        $scope.etapa = 'Analizando perfil...';
+                        salvaImagem(testeSelecionado);
+                    }, 2000);
+
+                } else {
+                    console.log(res.data.message)
+                }
+
+            }, function (err) {
+                // Error
+                console.log(err);
+            });
+        }else{
+            $window.alert('Você deve logar na sua conta do Facebook para realizar os testes!');
+        }
+
+
 
 
     };
-
+    $scope.fecha = function () {
+        $scope.mostraOverlay = false;
+        $scope.concluido = false;
+    }
     $scope.shareOnFacebook = function () {
-       /* FB.ui({
-  method: 'feed',
-  link: 'https://developers.facebook.com/docs/',
-  caption: 'An example caption',
-}, function(response){});
-       */ FB.ui({
+        $scope.mostraOverlay = false;
+        $scope.concluido = false;
+        FB.ui({
             method: 'feed',
             name: 'Facebook Testes',
-            link: 'http://www.facebooktestes.com.br',
+            link: 'http://www.facebooktestes.com.br/' + testeSelecionado,
             caption: 'www.facebooktestes.com.br',
-            picture: 'http://www.facebooktestes.com.br/api/imagem/'+$scope.user.idUserFB + '_' + teste + '.png',
+            picture: 'http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + testeSelecionado + '.png',
             description: 'Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
         }, function (response) {
             if (response && response.post_id) { }
@@ -66,11 +115,11 @@
     function salvaImagem(nomeTeste) {
 
         var element = document.getElementById(nomeTeste);
-        //element.style.display = "block";
+        element.style.display = "block";
         html2canvas(element, {
             proxy: "/proxy",
             onrendered: function (canvas) {
-                //element.style.display = "none";
+                element.style.display = "none";
                 var base64Data = canvas.toDataURL("image/png").replace(/^data:image\/png;base64,/, "");
 
                 $http.post('/api/postImg/', {
@@ -79,10 +128,19 @@
                     file: base64Data
                 })
                     .success(function (data) {
-                        console.log(data.message)
+                        //console.log(data.message)
+                        $timeout(function () {
+                            $scope.etapa = 'Calculando...';
+                        }, 2000);
+                        $timeout(function () {
+                            $scope.etapa = 'Teste realizado com sucesso!';
+                            $scope.concluido = true;
+                        }, 4000);
                     })
                     .error(function (data) {
                         console.log(data.erro);
+                        $scope.etapa = 'Algum erro ocorre ;(!';
+                        $scope.concluido = false;
                     });
 
             },
@@ -197,7 +255,8 @@
                 birthday: $scope.user.birthday
 
             }).then(function (res) {
-                console.log(res.data.message);
+                //console.log(res.data.message);
+                logadoFace = true;
             }, function (err) {
                 // Error
                 console.log(err);

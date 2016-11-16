@@ -11,6 +11,7 @@ exports.postTeste = function (req, res) {
       var newTeste = new Teste({
         nomeTeste: req.body.nomeTeste,
         pergunta: req.body.pergunta,
+        resumo: req.body.resumo,
         respostas: [{
           desc1: req.body.desc1,
           desc2: req.body.desc2,
@@ -74,10 +75,24 @@ exports.getTestes = function (req, res) {
   Teste.find({}).select('pergunta').select('resumo').select('nomeTeste').exec( function (err, testes) {
     if (err)
       return res.send(err);
-    if (!testes)
+    if (testes.length == 0)
       return res.json({ message: 'noteste' });
     // Success
     return res.json({ message: 'success', testes: testes });
+
+  });
+
+};
+
+exports.getTestePergunta = function (req, res) {
+
+  Teste.findOne({nomeTeste: req.headers.nome}).select('pergunta').select('resumo').select('nomeTeste').exec( function (err, teste) {
+    if (err)
+      return res.send(err);
+    if (!teste)
+      return res.json({ message: 'noteste' });
+    // Success
+    return res.json({ message: 'success', teste: teste });
 
   });
 

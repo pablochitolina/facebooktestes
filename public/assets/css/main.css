@@ -1,6 +1,131 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600,600italic,700");
 @import url("font-awesome.min.css");
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.7);
+  text-align: center;
+}
+
+.btnz {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border:none;
+    background-color: #ececec;
+    text-decoration: none;
+    font-size: 18px;
+    color: #FFF;
+}
+.btnz:hover {
+    color: #efefef;
+}
+.facebook {
+    background-color: #3b5998;
+}
+
+#wrapper {
+	height: 50px;
+	width: 50px;
+	position: relative;
+	margin: 0 auto;
+}
+
+#backwrapper {
+	padding: 20px;
+	position: relative;
+	top: 20%;
+	background-color: #ccc;
+	border-radius: 20px;
+	    z-index: 1;
+		max-width: 50%;
+		margin: auto;
+}
+
+#upperJaw {
+	height: 25px;
+	width: 50px;
+	border-radius: 50px 50px 0 0;
+	background-color: yellow;
+	animation: pakuUp .5s linear infinite;
+	transform-origin: center bottom;
+}
+
+#lowerJaw {
+	height: 25px;
+	width: 50px;
+	border-radius: 0 0 50px 50px;
+	background-color: yellow;
+	animation: pakuDown .5s linear infinite;
+	transform-origin: center top;
+}
+
+.breadcrumbs {
+	position: absolute;
+	z-index: -1;
+	
+	margin-top: -5px;
+	height: 10px;
+	width: 10px;
+	border-radius: 10px;
+	background-color: black;
+}
+
+#crumb1 {
+	animation: food 2s linear 2s infinite;
+}
+
+#crumb2 {
+	animation: food 2s linear 1.5s infinite;
+}
+
+#crumb3 {
+	animation: food 2s linear 1s infinite;
+}
+
+#crumb4 {
+	animation: food 2s linear .5s infinite;
+}
+
+@keyframes food {
+	0% {
+		left: 100px;
+	}
+	100% {
+		left: 0px;
+	}
+}
+
+@keyframes pakuUp {
+	0% {
+		transform: rotate(-40deg);
+	}
+	50% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-40deg);
+	}
+}
+
+@keyframes pakuDown {
+	0% {
+		transform: rotate(40deg);
+	}
+	50% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(40deg);
+	}
+}
+
+
 .imagem-result{
 	background-image: url("../../images/back01.png");
 	width: 600px;

@@ -15,12 +15,39 @@
 </head>
 
 <body>
+	<div ng-show="mostraOverlay" class="overlay">
 
+
+		<div id="backwrapper">
+			<i ng-show="concluido" ng-click="fecha()" class="fa fa-times" style="float: right" aria-hidden="true"></i>
+
+			<div ng-hide="concluido" id="wrapper">
+
+
+				<div id="upperJaw"></div>
+
+				<div class="breadcrumbs" id="crumb1"></div>
+				<div class="breadcrumbs" id="crumb2"></div>
+				<div class="breadcrumbs" id="crumb3"></div>
+				<div class="breadcrumbs" id="crumb4"></div>
+
+				<div id="lowerJaw"></div>
+
+			</div>
+			<h3>{{etapa}}</h3>
+			<a ng-show="concluido" class="btnz share facebook" ng-click="shareOnFacebook()"><i class="fa fa-facebook"></i> Compartilhar</a>
+
+
+		</div>
+
+
+
+	</div>
 	<!-- Nav -->
 	<nav id="nav">
 		<ul class="container">
 			<li><a href="#top" du-smooth-scroll>Topo</a></li>
-			<li><a href="#work" du-smooth-scroll>Especiais para você</a></li>
+			<!--<li><a href="#work" du-smooth-scroll>Especiais para você</a></li>-->
 			<li><a href="#ofertas" du-smooth-scroll>Ofertas</a></li>
 			<li><a href="#portfolio" du-smooth-scroll>Todos os testes</a></li>
 			<li><a href="#contact" du-smooth-scroll>Contato</a></li>
@@ -46,10 +73,12 @@
 
 
 					<p>É um prazer ter você aqui conosco :)</p>
-					<p>Para <a href="#work">iniciar seu teste</a> clique no botão abaixo.</p>
-					<a ng-click="shareOnFacebook()" class="button big scrolly">Iniciar o teste</a>
-					<p>Ou se quiser dar mais uma olhada em nossos outros testes que separamos <a href="#work">pra você</a> fique a vontade
+					<p ng-show="temTeste">Para iniciar seu teste "<strong>{{perguntaTeste}}</strong>" clique no botão abaixo.</p>
+					<a ng-show="temTeste" ng-click="calculaTeste('url')" class="button big scrolly">Iniciar o teste</a>
+					<p ng-show="temTeste">Ou se quiser dar mais uma olhada em nossos outros testes que separamos <a href="#work">pra você</a> fique a vontade
 						para descer a página.</p>
+					<p ng-hide="temTeste">Temos vários testes feitos cuidadosamente para você se divertir com o resultado! Fique a vontade para fazer todos eles
+						e não esqueça de compartilhar com seus amigos!!</p>
 
 				</div>
 			</div>
@@ -58,7 +87,7 @@
 
 
 
-	<!-- Work -->
+	<!-- Work 
 	<div id="work" class="wrapper style5">
 		<article>
 			<header>
@@ -90,11 +119,59 @@
 					</div>
 				</div>
 			</div>
-			>
+			
+		</article>
+	</div>-->
+
+
+
+	<!-- Portfolio -->
+	<div id="portfolio" class="wrapper style3">
+		<article>
+			<header>
+				<h2>Todos os testes</h2>
+				<p>Abaixo todos os testes que temos disponível. Fique a vontade para fazer quantos você quiser. São todos preparados com
+					muito carinho por nossa equipe e estão em constante atualização para serem cada vez mais precisos!</p>
+			</header>
+			<div class="container">
+				<div class="row">
+					<div class="4u 12u(mobile)">
+						<section class="box style1">
+							<img class="12u" src="/images/mantra2017.png" alt="" /></span>
+
+							<a ng-click="calculaTeste('mantra2017')" style="margin-top: 15px;" class="button medium scrolly">Iniciar o teste</a
+						</section>
+					</div>
+					
+				</div>
+				<!--<div class="row">
+					<div class="4u 12u(mobile)">
+						<section class="box style1">
+							<span class="icon featured fa-comments-o"></span>
+							<h3>Consequat lorem</h3>
+							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
+						</section>
+					</div>
+					<div class="4u 12u(mobile)">
+						<section class="box style1">
+							<span class="icon featured fa-camera-retro"></span>
+							<h3>Lorem dolor tempus</h3>
+							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
+						</section>
+					</div>
+					<div class="4u 12u(mobile)">
+						<section class="box style1">
+							<span class="icon featured fa-thumbs-o-up"></span>
+							<h3>Feugiat posuere</h3>
+							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
+						</section>
+					</div>
+				</div>-->
+			</div>
 		</article>
 	</div>
 
-	<!-- Ofertas -->
+	<!-- Ofertas 
 	<div id="ofertas" class="wrapper style2">
 		<article>
 			<header>
@@ -119,66 +196,7 @@
 				</div>
 			</div>
 		</article>
-	</div>
-
-	<!-- Portfolio -->
-	<div id="portfolio" class="wrapper style3">
-		<article>
-			<header>
-				<h2>Todos os testes</h2>
-				<p>Abaixo todos os testes que temos disponível. Fique a vontade para fazer quantos você quiser. São todos preparados com
-					muito carinho por nossa equipe e estão em constante atualização para serem cada vez mais precisos!</p>
-			</header>
-			<div class="container">
-				<div class="row">
-					<div class="4u 12u(mobile)">
-						<section class="box style1">
-							<span class="icon featured fa-comments-o"></span>
-							<h3>Consequat lorem</h3>
-							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-						</section>
-					</div>
-					<div class="4u 12u(mobile)">
-						<section class="box style1">
-							<span class="icon featured fa-camera-retro"></span>
-							<h3>Lorem dolor tempus</h3>
-							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-						</section>
-					</div>
-					<div class="4u 12u(mobile)">
-						<section class="box style1">
-							<span class="icon featured fa-thumbs-o-up"></span>
-							<h3>Feugiat posuere</h3>
-							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-						</section>
-					</div>
-				</div>
-				<div class="row">
-					<div class="4u 12u(mobile)">
-						<section class="box style1">
-							<span class="icon featured fa-comments-o"></span>
-							<h3>Consequat lorem</h3>
-							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-						</section>
-					</div>
-					<div class="4u 12u(mobile)">
-						<section class="box style1">
-							<span class="icon featured fa-camera-retro"></span>
-							<h3>Lorem dolor tempus</h3>
-							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-						</section>
-					</div>
-					<div class="4u 12u(mobile)">
-						<section class="box style1">
-							<span class="icon featured fa-thumbs-o-up"></span>
-							<h3>Feugiat posuere</h3>
-							<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-						</section>
-					</div>
-				</div>
-			</div>
-		</article>
-	</div>
+	</div>-->
 
 	<!-- Contact -->
 	<div id="contact" class="wrapper style4">
@@ -222,7 +240,7 @@
 						</form>
 					</div>
 				</div>
-				<div class="row">
+				<!--<div class="row">
 					<div class="12u">
 						<hr />
 						<h3>Find me on ...</h3>
@@ -235,15 +253,17 @@
 							<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
 							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
 
-						</ul>
-						<hr />
+							</ul>
+							<hr />
 					</div>
-				</div>
+				</div>-->
 			</div>
 			<footer>
 				<ul id="copyright">
-					<li>&copy; Untitled. All rights reserved.</li>
+					<li>&copy; Droid.GO. All rights reserved.</li>
 					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li><img src="http://hitwebcounter.com/counter/counter.php?page=6534764&style=0038&nbdigits=9&type=page&initCount=0" title="Counter for Facebook Testes"
+							Alt="Facebook Testes" border="0"></li>
 				</ul>
 			</footer>
 		</article>
@@ -253,7 +273,7 @@
 
 		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
 			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
-				
+
 				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
 			</div>
 		</div>
@@ -263,19 +283,19 @@
 				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
 			</div>
 			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px">
-				<header style="margin-bottom: 30px;" >
-					<h1 style="text-align: center;"><strong class="borda-2px" style="font-size: 40px;">{{desc1}}</strong></h1>
+				<header style="margin-bottom: 30px;">
+					<h1 style="text-align: center;"><strong class="borda-2px" style="font-size: 30px;">{{desc1}}</strong></h1>
 				</header>
-				<p class="borda-2px" style="font-size: 30px;text-align: lefy; margin-right: -20px;">{{desc3}}</p>
+				<p class="borda-2px" style="font-size: 20px;text-align: lefy; margin-right: -20px;">{{desc2}}</p>
 
 			</div>
 		</div>
 
 		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
-			
-				
-				<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
-			
+
+
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
+
 		</div>
 
 	</div>

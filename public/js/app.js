@@ -36,6 +36,10 @@ app.config(function ($routeProvider) {
       templateUrl: '/templates/principal.html',
       controller: 'PrincipalCtrl'
     })
+    .when('/principal/:teste', {
+      templateUrl: '/templates/principal.html',
+      controller: 'PrincipalCtrl'
+    })
     
     .otherwise({ redirectTo: '/principal' });
 
