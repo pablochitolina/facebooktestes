@@ -19,7 +19,7 @@
 
 
 		<div id="backwrapper">
-			<i ng-show="concluido" ng-click="fecha()" class="fa fa-times" style="float: right" aria-hidden="true"></i>
+			<i ng-show="concluido" ng-click="fecha()" class="fa fa-times" style="float: right; font-size: 30px; display: block;" ></i>
 
 			<div ng-hide="concluido" id="wrapper">
 
@@ -35,7 +35,7 @@
 
 			</div>
 			<h3>{{etapa}}</h3>
-			<a ng-show="mostraShare" class="btnz share facebook" ng-click="shareOnFacebook()"><i class="fa fa-facebook"></i> Compartilhar</a>
+			<a ng-show="mostraShare" style="max-width: 200px; margin: 0 auto;" class="btnz share facebook" ng-click="shareOnFacebook()"><i class="fa fa-facebook"></i> Compartilhar</a>
 
 
 		</div>
@@ -74,7 +74,11 @@
 
 					<p>É um prazer ter você aqui conosco :)</p>
 					<p ng-show="temTeste">Para iniciar seu teste "<strong>{{perguntaTeste}}</strong>" clique no botão abaixo.</p>
-					<a ng-show="temTeste" ng-click="calculaTeste('url')" class="button big scrolly">Iniciar o teste</a>
+
+					<a ng-show="temTeste && logadoFace" ng-click="calculaTeste('url')" class="button big scrolly">Iniciar o teste</a>
+					<p ng-hide="logadoFace" style="color: red">Você precisa fazer login no Facebook antes de continuar!</p>
+					<a ng-hide="logadoFace" style="max-width: 100px; margin: 0 auto;" class="btnz share facebook" ng-click="loginFace()"><i class="fa fa-facebook"></i> Login</a>
+
 					<p ng-show="temTeste">Ou se quiser dar mais uma olhada em nossos outros testes que separamos <a href="#work">pra você</a> fique a vontade
 						para descer a página.</p>
 					<p ng-hide="temTeste">Temos vários testes feitos cuidadosamente para você se divertir com o resultado! Fique a vontade para fazer todos eles
@@ -139,10 +143,10 @@
 						<section class="box style1">
 							<img class="12u" src="/images/mantra2017.png" alt="" /></span>
 
-							<a ng-click="calculaTeste('mantra2017')" style="margin-top: 15px;" class="button medium scrolly">Iniciar o teste</a
+							<a ng-click="calculaTeste('mantra2017')" style="margin-top: 15px;" class="button medium scrolly">Iniciar o teste</a>
 						</section>
 					</div>
-					
+
 				</div>
 				<!--<div class="row">
 					<div class="4u 12u(mobile)">
@@ -269,7 +273,7 @@
 		</article>
 	</div>
 
-	<div id="mantra2017" style="display: block; font-family: sans-serif;" class="imagem-result">
+	<div id="mantra2017" style="display: none; font-family: sans-serif;" class="imagem-result">
 
 		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
 			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
@@ -283,10 +287,12 @@
 				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
 			</div>
 			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px">
-				<header style="margin-bottom: 30px;">
-					<h1 style="text-align: center;"><strong class="borda-2px" style="font-size: 30px;">{{desc1}}</strong></h1>
+				<header class="borda-2px" style="margin:  0 15px 30px 0;">
+					<h1 style="text-align: center; margin: 0"><strong style="font-size: 30px;">{{desc1}}</strong></h1>
 				</header>
-				<p class="borda-2px" style="font-size: 20px;text-align: lefy; margin-right: -20px;">{{desc2}}</p>
+				<div class="borda-2px" style="font-size: 20px;text-align: left; margin-right: -20px;">
+					<p style="padding: 0; margin: 0">{{desc2}}</p>
+				</div>
 
 			</div>
 		</div>

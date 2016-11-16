@@ -7,7 +7,7 @@
     $scope.concluido = false;
     $scope.mostraShare = false;
     $scope.mostraOverlay = false;
-    var logadoFace = false;
+    $scope.logadoFace = false;
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;
@@ -40,7 +40,7 @@
     $scope.desc4 = '';
 
     $scope.calculaTeste = function (teste) {
-        if (logadoFace) {
+        if ($scope.logadoFace) {
             $scope.etapa = 'Enviando informações...';
             $scope.mostraOverlay = true;
 
@@ -74,8 +74,12 @@
 
                     $timeout(function () {
                         $scope.etapa = 'Analizando perfil...';
-                        salvaImagem(testeSelecionado);
                     }, 2000);
+
+                    $timeout(function () {
+                        $scope.etapa = 'Calculando...';
+                        salvaImagem(testeSelecionado);
+                    }, 4000);
 
                 } else {
                     console.log(res.data.message)
@@ -124,6 +128,7 @@
 
     function salvaImagem(nomeTeste) {
 
+
         var element = document.getElementById(nomeTeste);
         element.style.display = "block";
         html2canvas(element, {
@@ -139,14 +144,12 @@
                 })
                     .success(function (data) {
                         //console.log(data.message)
-                        $timeout(function () {
-                            $scope.etapa = 'Calculando...';
-                        }, 2000);
+
                         $timeout(function () {
                             $scope.etapa = 'Teste realizado com sucesso!';
                             $scope.concluido = true;
                             $scope.mostraShare = true;
-                        }, 4000);
+                        }, 2000);
                     })
                     .error(function (data) {
                         console.log(data.erro);
@@ -186,6 +189,23 @@
         });
 
     };
+
+    $scope.loginFace = function () {
+        FB.login(function (response) {
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                testAPI();
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+                console.log('Please log into this app.');
+            } else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+                console.log('Please log into this Facebook.');
+            }
+        });
+
+    }
 
     function statusChangeCallback(response) {
         // The response object is returned with a status field that lets the
@@ -269,7 +289,7 @@
 
             }).then(function (res) {
                 //console.log(res.data.message);
-                logadoFace = true;
+                $scope.logadoFace = true;
             }, function (err) {
                 // Error
                 $window.alert('Ocorreu algum erro ao logar!');
