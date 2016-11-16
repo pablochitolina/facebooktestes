@@ -8,6 +8,7 @@
     $scope.mostraShare = false;
     $scope.mostraOverlay = false;
     $scope.logadoFace = false;
+    $scope.nomeUser = 'Desconhecido';
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;
@@ -65,7 +66,7 @@
                     $scope.desc3 = res.data.teste.desc3;
                     $scope.desc4 = res.data.teste.desc4;
 
-                    console.log(JSON.stringify(res.data))
+                    //console.log(JSON.stringify(res.data))
 
                     $timeout(function () {
                         $scope.$apply();
@@ -276,6 +277,7 @@
             User.setUser(newUser);
 
             $scope.user = newUser;
+            $scope.nomeUser = $scope.user.name;
             $scope.$apply();
 
             $http.defaults.headers.post["Content-Type"] = 'application/json';

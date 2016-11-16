@@ -34,7 +34,9 @@
 				<div id="lowerJaw"></div>
 
 			</div>
+			<h2>{{pergunta}}</h3>
 			<h3>{{etapa}}</h3>
+			<p ng-show="mostraShare" style="color: red">Compartilhe para ver o resultado!</p>
 			<a ng-show="mostraShare" style="max-width: 200px; margin: 0 auto;" class="btnz share facebook" ng-click="shareOnFacebook()"><i class="fa fa-facebook"></i> Compartilhar</a>
 
 
@@ -67,7 +69,7 @@
 				</div>
 				<div class="8u 12u(mobile)">
 					<header>
-						<h1>Olá, <strong>{{user.name}}</strong>!</h1>
+						<h1>Olá, <strong>{{nomeUser}}</strong>!</h1>
 					</header>
 
 
