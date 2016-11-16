@@ -91,7 +91,7 @@ exports.postTesteResult = function (req, res) {
           }
         }
 
-        return res.json({ message: 'successFeito', teste: retorno, pergunta: testeJson.pergunta });
+        return res.json({ message: 'successFeito', teste: retorno, pergunta: testeJson.pergunta, resumo: testeJson.resumo });
 
       });
     } else {
@@ -109,7 +109,7 @@ exports.postTesteResult = function (req, res) {
 
         user.save();
 
-        return res.json({ message: 'successNovo', teste: testeJson.respostas[index], pergunta: testeJson.pergunta });
+        return res.json({ message: 'successNovo', teste: testeJson.respostas[index], pergunta: testeJson.pergunta, resumo: testeJson.resumo });
 
       });
     }
