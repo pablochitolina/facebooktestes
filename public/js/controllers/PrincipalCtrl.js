@@ -78,13 +78,17 @@
 
                 } else {
                     console.log(res.data.message)
+                    $scope.etapa = 'Algum erro ocorreu ;(!';
+                    $scope.concluido = false;
                 }
 
             }, function (err) {
                 // Error
                 console.log(err);
+                $scope.etapa = 'Algum erro ocorreu ;(!';
+                $scope.concluido = false;
             });
-        }else{
+        } else {
             $window.alert('Você deve logar na sua conta do Facebook para realizar os testes!');
         }
 
@@ -95,6 +99,7 @@
     $scope.fecha = function () {
         $scope.mostraOverlay = false;
         $scope.concluido = false;
+
     }
     $scope.shareOnFacebook = function () {
         $scope.mostraOverlay = false;
@@ -139,8 +144,9 @@
                     })
                     .error(function (data) {
                         console.log(data.erro);
-                        $scope.etapa = 'Algum erro ocorre ;(!';
+                        $scope.etapa = 'Algum erro ocorreu ;(!';
                         $scope.concluido = false;
+
                     });
 
             },
@@ -259,6 +265,7 @@
                 logadoFace = true;
             }, function (err) {
                 // Error
+                $window.alert('Ocorreu algum erro ao logar!');
                 console.log(err);
             });
 
