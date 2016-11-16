@@ -5,6 +5,7 @@
     $scope.perguntaTeste = '';
     $scope.etapa = '';
     $scope.concluido = false;
+    $scope.mostraShare = false;
     $scope.mostraOverlay = false;
     var logadoFace = false;
 
@@ -79,14 +80,16 @@
                 } else {
                     console.log(res.data.message)
                     $scope.etapa = 'Algum erro ocorreu ;(!';
-                    $scope.concluido = false;
+                    $scope.concluido = true;
+                    $scope.mostraShare = false;
                 }
 
             }, function (err) {
                 // Error
                 console.log(err);
                 $scope.etapa = 'Algum erro ocorreu ;(!';
-                $scope.concluido = false;
+                $scope.concluido = true;
+                $scope.mostraShare = false;
             });
         } else {
             $window.alert('Você deve logar na sua conta do Facebook para realizar os testes!');
@@ -99,11 +102,13 @@
     $scope.fecha = function () {
         $scope.mostraOverlay = false;
         $scope.concluido = false;
+        $scope.mostraShare = false;
 
     }
     $scope.shareOnFacebook = function () {
         $scope.mostraOverlay = false;
         $scope.concluido = false;
+        $scope.mostraShare = false;
         FB.ui({
             method: 'feed',
             name: 'Facebook Testes',
@@ -140,12 +145,14 @@
                         $timeout(function () {
                             $scope.etapa = 'Teste realizado com sucesso!';
                             $scope.concluido = true;
+                            $scope.mostraShare = true;
                         }, 4000);
                     })
                     .error(function (data) {
                         console.log(data.erro);
                         $scope.etapa = 'Algum erro ocorreu ;(!';
-                        $scope.concluido = false;
+                        $scope.concluido = true;
+                        $scope.mostraShare = false;
 
                     });
 
