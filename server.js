@@ -32,7 +32,9 @@ router.route('/getTestes')
   router.route('/getTestePergunta')
   .get(testeController.getTestePergunta);
 
-//router.route('/editTeste').post(testeController.editTeste);
+router.route('/putTesteDesc').put(testeController.putTesteDesc);
+
+router.route('/putTeste').put(testeController.putTeste);
 
 router.route('/imagem/:imagename')
   .get(userController.getImagem);

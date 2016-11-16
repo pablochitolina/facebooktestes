@@ -60,30 +60,77 @@ exports.postTeste = function (req, res) {
 
 };
 
-/*
+exports.putTeste = function (req, res) {
 
-exports.editTeste = function (req, res) {
+  UserAdmin.findOne({ email: req.body.email }, function (err, userSeguro) {
+    if (err)
+      return res.send(err);
+    if (!userSeguro)
+      return res.json({ message: 'notauthorized' });
 
-  Teste.findOneAndUpdate(
-    { nomeTeste: req.body.nomeTeste, 'respostas._id': req.body.idResposta },
-    {
-      "$set": {
-        "respostas.$.desc1": req.body.desc1,
-        "respostas.$.desc2": req.body.desc2,
-        "respostas.$.desc3": req.body.desc3,
-        "respostas.$.desc4": req.body.desc4
-      }
-    }, {new: true},
-    function (err, doc) {
-      if (err)
-        return res.send(err);
-        console.log(doc)
+    if (userSeguro.id === req.body.id) {
+
+      Teste.findById(req.body.idteste, function (err, teste) {
+        if (err)
+          return res.send(err);
+        if (!teste)
+          return res.json({ message: 'noteste' });
+
+        //servico.email = req.body.email;//apenas em DEV, PRD não muda email
+        //teste.nomeTeste = req.body.nomeTeste;
+        teste.pergunta = req.body.pergunta;
+        teste.resumo = req.body.resumo;
+        teste.save();
+
+        res.json({ message: 'putTesteSuccess', teste:teste });
+
+      });
+
+    } else {
+      return res.json({ message: 'notauthorized' });
     }
-  );
+
+  });
 
 };
 
-*/
+
+exports.putTesteDesc = function (req, res) {
+
+  UserAdmin.findOne({ email: req.body.email }, function (err, userSeguro) {
+    if (err)
+      return res.send(err);
+    if (!userSeguro)
+      return res.json({ message: 'notauthorized' });
+
+    if (userSeguro.id === req.body.id) {
+
+      Teste.findOneAndUpdate(
+        { nomeTeste: req.body.nomeTeste, 'respostas._id': req.body.idResposta },
+        {
+          "$set": {
+            "respostas.$.desc1": req.body.desc1,
+            "respostas.$.desc2": req.body.desc2,
+            "respostas.$.desc3": req.body.desc3,
+            "respostas.$.desc4": req.body.desc4
+          }
+        }, { new: true },
+        function (err, doc) {
+          if (err)
+            return res.send(err);
+          //console.log(doc)
+          return res.send(doc);
+        }
+      );
+
+    } else {
+      return res.json({ message: 'notauthorized' });
+    }
+
+  });
+
+};
+
 
 exports.getTestes = function (req, res) {
 
@@ -95,7 +142,7 @@ exports.getTestes = function (req, res) {
 
     if (userSeguro.id === req.headers.id) {
 
-      Teste.find({}).select('pergunta').select('resumo').select('nomeTeste').exec(function (err, testes) {
+      Teste.find({}, function (err, testes) {
         if (err)
           return res.send(err);
         if (testes.length == 0)
