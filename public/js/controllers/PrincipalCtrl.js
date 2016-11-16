@@ -35,6 +35,7 @@
     }
 
     $scope.pergunta = '';
+    $scope.resumo = '';
     $scope.desc1 = '';
     $scope.desc2 = '';
     $scope.desc3 = '';
@@ -61,6 +62,7 @@
                 if (res.data.message === 'successFeito' || res.data.message === 'successNovo') {
 
                     $scope.pergunta = res.data.pergunta;
+                    $scope.resumo = res.data.resumo;
                     $scope.desc1 = res.data.teste.desc1;
                     $scope.desc2 = res.data.teste.desc2;
                     $scope.desc3 = res.data.teste.desc3;
@@ -124,7 +126,7 @@
             link: 'http://www.facebooktestes.com.br/#/principal/' + $scope.testeSelecionado,
             caption: 'www.facebooktestes.com.br',
             picture: 'http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + $scope.testeSelecionado + '.png',
-            description: 'Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
+            description: $scope.resumo
         }, function (response) {
             if (response && response.post_id) { }
             else { }
