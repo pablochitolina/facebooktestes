@@ -112,7 +112,7 @@
         FB.ui({
             method: 'feed',
             name: 'Facebook Testes',
-            link: 'http://www.facebooktestes.com.br/' + testeSelecionado,
+            link: 'http://www.facebooktestes.com.br/#/principal/' + testeSelecionado,
             caption: 'www.facebooktestes.com.br',
             picture: 'http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + testeSelecionado + '.png',
             description: 'Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
