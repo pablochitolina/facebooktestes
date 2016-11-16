@@ -111,6 +111,7 @@
 
     }
     $scope.shareOnFacebook = function () {
+        console.log('http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + $scope.testeSelecionado + '.png')
         $scope.mostraOverlay = false;
         $scope.concluido = false;
         $scope.mostraShare = false;
