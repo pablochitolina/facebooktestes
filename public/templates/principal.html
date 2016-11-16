@@ -19,9 +19,9 @@
 
 
 		<div id="backwrapper">
-			<i ng-show="concluido" ng-click="fecha()" class="fa fa-times" style="float: right; font-size: 30px; display: block;" ></i>
-
-			<div ng-hide="concluido" id="wrapper">
+			<i ng-show="concluido" ng-click="fecha()" class="fa fa-times" style="float: right; font-size: 30px; display: block;"></i>
+			<img class="12u" src="/images/{{testeSelecionado}}.png" alt="" /></span>
+			<div style="margin-top: 15px" ng-hide="concluido" id="wrapper">
 
 
 				<div id="upperJaw"></div>
@@ -34,7 +34,8 @@
 				<div id="lowerJaw"></div>
 
 			</div>
-			<h2>{{pergunta}}</h3>
+
+
 			<h3>{{etapa}}</h3>
 			<p ng-show="mostraShare" style="color: red">Compartilhe para ver o resultado!</p>
 			<a ng-show="mostraShare" style="max-width: 200px; margin: 0 auto;" class="btnz share facebook" ng-click="shareOnFacebook()"><i class="fa fa-facebook"></i> Compartilhar</a>

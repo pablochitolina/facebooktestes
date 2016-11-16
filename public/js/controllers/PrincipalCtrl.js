@@ -1,6 +1,6 @@
 ﻿app.controller('PrincipalCtrl', function ($scope, $window, $timeout, ModalService, $anchorScroll, $location, User, $http, $routeParams) {
 
-    var testeSelecionado = '';
+    $scope.testeSelecionado = '';
     $scope.temTeste = false;
     $scope.perguntaTeste = '';
     $scope.etapa = '';
@@ -46,15 +46,15 @@
             $scope.mostraOverlay = true;
 
             if (teste === 'url') {
-                testeSelecionado = $routeParams.teste;
+                $scope.testeSelecionado = $routeParams.teste;
             } else {
-                testeSelecionado = teste;
+                $scope.testeSelecionado = teste;
             }
 
 
             $http.defaults.headers.post["Content-Type"] = 'application/json';
             $http.post('/api/postTesteResult', {
-                nomeTeste: testeSelecionado,
+                nomeTeste: $scope.testeSelecionado,
                 idUserFB: $scope.user.idUserFB
             }).then(function (res) {
                 //console.log(res.data.message)
@@ -79,7 +79,7 @@
 
                     $timeout(function () {
                         $scope.etapa = 'Calculando...';
-                        salvaImagem(testeSelecionado);
+                        salvaImagem($scope.testeSelecionado);
                     }, 4000);
 
                 } else {
@@ -117,9 +117,9 @@
         FB.ui({
             method: 'feed',
             name: 'Facebook Testes',
-            link: 'http://www.facebooktestes.com.br/#/principal/' + testeSelecionado,
+            link: 'http://www.facebooktestes.com.br/#/principal/' + $scope.testeSelecionado,
             caption: 'www.facebooktestes.com.br',
-            picture: 'http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + testeSelecionado + '.png',
+            picture: 'http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + $scope.testeSelecionado + '.png',
             description: 'Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
         }, function (response) {
             if (response && response.post_id) { }
