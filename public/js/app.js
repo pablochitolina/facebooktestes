@@ -45,7 +45,7 @@ app.config(function ($routeProvider) {
 
 });
 
-app.directive('googleAdsenseUm', [
+window.app.directive('googleAdsenseUm', [
   '$timeout', function($timeout) {
     return {
       restrict: 'A',
@@ -53,7 +53,7 @@ app.directive('googleAdsenseUm', [
         return $timeout(function() {
           var adsbygoogle, html, rand;
           rand = Math.random();
-          html = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8832799678197868" data-ad-slot="5421662634" data-ad-format="auto"></ins>';
+          html = "<ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8832799678197868' data-ad-slot='5421662634' data-ad-region='page-" + rand + "'></ins>";
           $(element).append(html);
           console.log("googleAdsenseUm loaded")
           return (adsbygoogle = window.adsbygoogle || []).push({});
@@ -64,16 +64,34 @@ app.directive('googleAdsenseUm', [
 ]);
 
 
-app.directive('googleAdsenseDois', [
+window.app.directive('googleAdsenseDois', [
   '$timeout', function($timeout) {
     return {
       restrict: 'A',
       link: function(scope, element, attr) {
         return $timeout(function() {
           var adsbygoogle, html, rand;
-          html = '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8832799678197868" data-ad-slot="9123505437"></ins>';
+          rand = Math.random();
+          html = "<ins class='adsbygoogle' style='display:inline-block;width:300px;height:250px' data-ad-client='ca-pub-8832799678197868' data-ad-slot='9123505437' data-ad-region='page-" + rand + "'></ins>";
           $(element).append(html);
           console.log("googleAdsenseDois loaded")
+          return (adsbygoogle = window.adsbygoogle || []).push({});
+        });
+      }
+    };
+  }
+]);
+
+window.app.directive('googleAd', [
+  '$timeout', function($timeout) {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+        return $timeout(function() {
+          var adsbygoogle, html, rand;
+          rand = Math.random();
+          html = "<ins class='adsbygoogle' style='display:inline-block;width:300px;height:250px' data-ad-client='ca-pub-8832799678197868' data-ad-slot='9123505437' data-ad-region='page-" + rand + "'></ins>";
+          $(element).append(html);
           return (adsbygoogle = window.adsbygoogle || []).push({});
         });
       }
