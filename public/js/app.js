@@ -45,7 +45,6 @@ app.config(function ($routeProvider) {
 
 });
 
-
 app.directive('googleAdsenseUm', [
   '$timeout', function($timeout) {
     return {
@@ -54,8 +53,9 @@ app.directive('googleAdsenseUm', [
         return $timeout(function() {
           var adsbygoogle, html, rand;
           rand = Math.random();
-          html = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8832799678197868" data-ad-slot="8375129036" data-ad-format="auto" data-ad-region="page-' + rand + '"></ins>';
+          html = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8832799678197868" data-ad-slot="5421662634" data-ad-format="auto"></ins>';
           $(element).append(html);
+          console.log("googleAdsenseUm loaded")
           return (adsbygoogle = window.adsbygoogle || []).push({});
         });
       }
@@ -63,7 +63,7 @@ app.directive('googleAdsenseUm', [
   }
 ]);
 
-/*
+
 app.directive('googleAdsenseDois', [
   '$timeout', function($timeout) {
     return {
@@ -71,13 +71,12 @@ app.directive('googleAdsenseDois', [
       link: function(scope, element, attr) {
         return $timeout(function() {
           var adsbygoogle, html, rand;
-          rand = Math.random();
-          html = '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8832799678197868" data-ad-slot="9123505437" data-ad-region="page-' + rand + '"></ins>';
+          html = '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8832799678197868" data-ad-slot="9123505437"></ins>';
           $(element).append(html);
+          console.log("googleAdsenseDois loaded")
           return (adsbygoogle = window.adsbygoogle || []).push({});
         });
       }
     };
   }
 ]);
-*/
