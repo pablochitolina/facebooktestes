@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ngRoute', 'duScroll', 'angularModalService']);
+var app = angular.module('starter', ['ngRoute', 'duScroll', 'angularModalService', 'angular-google-adsense']);
 
 app.service('User', function () {
 
@@ -97,6 +97,8 @@ app.directive('googleAd', [
     };
   }
 ]);
+
+
 
 // '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3199660652950290" data-ad-slot="6259591966"></ins>'
 //8832799678197868
