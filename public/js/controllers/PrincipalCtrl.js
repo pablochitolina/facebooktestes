@@ -6,9 +6,14 @@
     $scope.etapa = '';
     $scope.concluido = false;
     $scope.mostraShare = false;
-    $scope.mostraOverlay = false;
+    $scope.mostraOverlay = false; //----
     $scope.logadoFace = false;
     $scope.nomeUser = 'Desconhecido';
+
+    $scope.larguraOverlay = window.innerWidth+'px';
+
+
+
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;
