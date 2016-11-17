@@ -12,7 +12,7 @@
 
     $scope.larguraOverlay = window.innerWidth+'px';
 
-
+$scope.rand = Math.random();
 
 
     if ($routeParams.teste != undefined) {

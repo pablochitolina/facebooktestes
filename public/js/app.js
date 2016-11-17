@@ -45,26 +45,39 @@ app.config(function ($routeProvider) {
 
 });
 
-app.directive('googleAdsenseUm', function () {
-  return {
-    restrict: 'A',
-    replace: true,
-    template: '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8832799678197868" data-ad-slot="5421662634" data-ad-format="auto"></ins>',
-    controller: function () {
-      console.log("GoogleAdsenseUm: Google Adsense is being added!");
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    }
-  };
-});
 
-app.directive('googleAdsenseDois', function () {
-  return {
-    restrict: 'A',
-    replace: true,
-    template: '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8832799678197868" data-ad-slot="8375129036" data-ad-format="auto"></ins>',
-    controller: function () {
-      console.log("GoogleAdsenseDois: Google Adsense is being added!");
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    }
-  };
-});
+app.directive('googleAdsenseUm', [
+  '$timeout', function($timeout) {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+        return $timeout(function() {
+          var adsbygoogle, html, rand;
+          rand = Math.random();
+          html = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8832799678197868" data-ad-slot="8375129036" data-ad-format="auto" data-ad-region="page-' + rand + '"></ins>';
+          $(element).append(html);
+          return (adsbygoogle = window.adsbygoogle || []).push({});
+        });
+      }
+    };
+  }
+]);
+
+/*
+app.directive('googleAdsenseDois', [
+  '$timeout', function($timeout) {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+        return $timeout(function() {
+          var adsbygoogle, html, rand;
+          rand = Math.random();
+          html = '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8832799678197868" data-ad-slot="9123505437" data-ad-region="page-' + rand + '"></ins>';
+          $(element).append(html);
+          return (adsbygoogle = window.adsbygoogle || []).push({});
+        });
+      }
+    };
+  }
+]);
+*/
