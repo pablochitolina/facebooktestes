@@ -12,7 +12,6 @@
 
     $scope.larguraOverlay = window.innerWidth + 'px';
 
-    $scope.rand = Math.random();
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;
@@ -25,8 +24,6 @@
 
                 $scope.perguntaTeste = data.teste.pergunta;
                 //console.log(JSON.stringify(data.teste))
-
-
                 $timeout(function () {
                     $scope.$apply();
                 });
