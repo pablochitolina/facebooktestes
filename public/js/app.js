@@ -45,15 +45,14 @@ app.config(function ($routeProvider) {
 
 });
 
-window.app.directive('googleAdsenseUm', [//banner 1 resp
+app.directive('googleAdsenseUm', [//banner 1 resp
   '$timeout', function($timeout) {
     return {
       restrict: 'A',
       link: function(scope, element, attr) {
         return $timeout(function() {
-          var adsbygoogle, html, rand1;
-          rand1 = Math.random();
-          html = "<ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8832799678197868' data-ad-slot='5421662634' data-ad-region='page-" + rand1 + "'></ins>";
+          var adsbygoogle, html;
+          html = "<ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8832799678197868' data-ad-slot='5421662634'></ins>";
           $(element).append(html);
           console.log("googleAdsenseUm loaded")
           return (adsbygoogle = window.adsbygoogle || []).push({});
@@ -64,7 +63,7 @@ window.app.directive('googleAdsenseUm', [//banner 1 resp
 ]);
 
 
-window.app.directive('googleAdsenseDois', [ // com tam fixo
+app.directive('googleAdsenseDois', [ // com tam fixo
   '$timeout', function($timeout) {
     return {
       restrict: 'A',
@@ -82,7 +81,7 @@ window.app.directive('googleAdsenseDois', [ // com tam fixo
   }
 ]);
 
-window.app.directive('googleAd', [ //do cara
+app.directive('googleAd', [
   '$timeout', function($timeout) {
     return {
       restrict: 'A',
@@ -90,7 +89,7 @@ window.app.directive('googleAd', [ //do cara
         return $timeout(function() {
           var adsbygoogle, html, rand;
           rand = Math.random();
-          html = "<ins class='adsbygoogle' style='display:inline-block;width:300px;height:250px' data-ad-client='ca-pub-3199660652950290' data-ad-slot='6259591966' data-ad-region='page-" + rand + "'></ins>";
+          html = "<ins class='adsbygoogle' style='display:inline-block;width:300px;height:250px' data-ad-client='ca-pub-3199660652950290' data-ad-slot='6259591966'></ins>";
           $(element).append(html);
           return (adsbygoogle = window.adsbygoogle || []).push({});
         });
@@ -98,3 +97,16 @@ window.app.directive('googleAd', [ //do cara
     };
   }
 ]);
+
+// '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3199660652950290" data-ad-slot="6259591966"></ins>'
+//8832799678197868
+//9123505437
+app.directive('ads', function() {
+    return {
+        restrict: 'A',
+        template: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3199660652950290" data-ad-slot="6259591966" data-ad-format="auto"></ins>',
+        controller: function(){
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    };
+});

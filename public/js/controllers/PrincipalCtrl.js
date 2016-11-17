@@ -1,4 +1,4 @@
-﻿app.controller('PrincipalCtrl', function ($scope, $window, $timeout, ModalService, $anchorScroll, $location, User, $http, $routeParams) {
+﻿app.controller('PrincipalCtrl', function ($rootScope, $scope, $window, $timeout, ModalService, $anchorScroll, $location, User, $http, $routeParams) {
 
     $scope.testeSelecionado = '';
     $scope.temTeste = false;
@@ -11,7 +11,6 @@
     $scope.nomeUser = 'Desconhecido';
 
     $scope.larguraOverlay = window.innerWidth + 'px';
-
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;
