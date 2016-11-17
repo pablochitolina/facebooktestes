@@ -127,11 +127,16 @@
 }
 
 
-.imagem-result{
+.mantra2017{
 	background-image: url("../../images/back01.png");
 	width: 600px;
 	height: 315px;
-	overflow-y:scroll;
+}
+
+.lemavida{
+	background-image: url("../../images/back2.jpg");
+	width: 600px;
+	height: 315px;
 }
 
 .borda-2px {

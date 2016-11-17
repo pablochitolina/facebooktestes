@@ -150,11 +150,19 @@
 			
 			<div class="container">
 				<div class="row">
-					<div class="4u 12u(mobile)">
-						<section class="box style1">
+					<div style="padding: 0" class="4u 12u(mobile)">
+						<section style="padding: 20px" class="box style1">
 							<img style="width: 100%;" src="/images/mantra2017.png" alt="" /></span>
-							<p>Teste para saber qual é o mantra que vai fortalecer seu ponto fraco em 2017.</p>
-							<a ng-click="calculaTeste('mantra2017')" style="margin-top: 15px;" class="button medium scrolly">Iniciar o teste</a>
+							<p style="margin-top: 15px; margin-bottom: 15px;">Teste para saber qual é o mantra que vai guiar seu caminho em 2017.</p>
+							<a ng-click="calculaTeste('mantra2017')" class="button medium scrolly">Iniciar o teste</a>
+						</section>
+					</div>
+
+					<div style="padding: 0" class="4u 12u(mobile)">
+						<section style="padding: 20px" class="box style1">
+							<img style="width: 100%;" src="/images/lemavida.png" alt="" /></span>
+							<p style="margin-top: 15px; margin-bottom: 15px;">Este teste vai descobrir algo que no fundo você já sabe: O lema da sua vida!</p>
+							<a ng-click="calculaTeste('lemavida')" class="button medium scrolly">Iniciar o teste</a>
 						</section>
 					</div>
 
@@ -302,15 +310,13 @@
 		</article>
 	</div>
 
-	<div id="mantra2017" style="display: none; font-family: sans-serif;" class="imagem-result">
-
+	<div id="mantra2017" style="display: none; font-family: sans-serif;" class="mantra2017">
 		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
 			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
 
 				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
 			</div>
 		</div>
-
 		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
 			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px">
 				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
@@ -322,17 +328,34 @@
 				<div class="borda-2px" style="font-size: 20px;text-align: left; margin-right: -20px;">
 					<p style="padding: 0; margin: 0">{{desc2}}</p>
 				</div>
-
 			</div>
 		</div>
-
 		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
-
-
 			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
-
 		</div>
+	</div>
 
+	<div id="lemavida" style="display: none; font-family: sans-serif;" class="lemavida">
+		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
+			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
+
+				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
+			</div>
+		</div>
+		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
+			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px">
+				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
+			</div>
+			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px">
+				<div class="borda-2px" style="font-size: 20px;text-align: left; margin-right: 10px;">
+					<p style="padding: 0; margin: 0">{{desc1}}</p>
+				<p style="padding: 0; margin: 0; text-align: right;"> - {{desc2}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
+		</div>
 	</div>
 
 </body>
