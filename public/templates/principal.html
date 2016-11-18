@@ -19,9 +19,10 @@
 <body>
 	<div ng-show="mostraOverlay" style="width: {{larguraOverlay}}" class="overlay">
 
-
+		
 		<div id="backwrapper">
 			<i ng-show="concluido" ng-click="fecha()" class="fa fa-times" style="float: right; font-size: 30px; display: block;"></i>
+			
 			<img style="width: 100%;" src="/images/{{testeSelecionado}}.png" alt="" /></span>
 			<div style="margin-top: 15px" ng-hide="concluido" id="wrapper">
 
@@ -80,7 +81,7 @@
 
 
 					<p>É um prazer ter você aqui conosco :)</p>
-					<p ng-show="temTeste">Para iniciar seu teste "<strong>{{perguntaTeste}}</strong>" clique no botão abaixo.</p>
+					<p ng-show="temTeste">Para iniciar seu teste"<strong>{{perguntaTeste}}</strong>" clique no botão abaixo.</p>
 
 					<a ng-show="temTeste && logadoFace" ng-click="calculaTeste('url')" class="button big scrolly">Iniciar o teste</a>
 					<p ng-hide="logadoFace" style="color: red">Você precisa fazer login no Facebook antes de continuar!</p>
@@ -135,7 +136,8 @@
 	</div>-->
 
 	<!--<adsense ad-client="ca-pub-8832799678197868" ad-slot="5421662634" inline-style="display:block" ad-format="auto"></adsense>-->
-		<div id="ofertas" class="wrapper style2"><!--ng-show="ofertas.length == 6" -->
+	<div id="ofertas" class="wrapper style2">
+		<!--ng-show="ofertas.length == 6" -->
 		<article>
 			<header>
 				<h2>Ofertas</h2>
@@ -144,7 +146,7 @@
 			</header>
 			<div class="container">
 				<div class="row">
-					<!--<div ng-repeat="oferta in ofertas " class="2u 6u(mobile)">
+					<!--<div ng-repeat="oferta in ofertas" class="2u 6u(mobile)">
 						<article style="padding: 0;" class="box style2">
 							<a target="_blank" href="{{oferta.link}}"><img src="../../images/promo/{{oferta.nome}}.png" alt="Oferta {{$index}}" /></a>
 						</article>
@@ -152,48 +154,48 @@
 					<!-- LOMADEE - BEGIN -->
 
 					<div class="4u 12u(mobile)">
-						<article style="padding: 0; min-width: 300px; min-height:250px " class="box style2">
-							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR"  width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
+						<article style="padding: 0; min-width: 300px; min-height:250px" class="box style2">
+							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
 						</article>
 					</div>
 					<div class="4u 12u(mobile)">
-						<article style="padding: 0; min-width: 300px; min-height:250px " class="box style2">
-							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR"  width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
+						<article style="padding: 0; min-width: 300px; min-height:250px" class="box style2">
+							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
 						</article>
 					</div>
 					<div class="4u 12u(mobile)">
-						<article style="padding: 0; min-width: 300px; min-height:250px " class="box style2">
-							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR"  width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
+						<article style="padding: 0; min-width: 300px; min-height:250px" class="box style2">
+							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
 						</article>
 					</div>
 
 
-<!-- LOMADEE - END -->
-					
+					<!-- LOMADEE - END -->
+
 				</div>
 
 				<div class="row">
 
 
 					<div class="4u 12u(mobile)">
-						<article style="padding: 0; min-width: 300px; min-height:250px " class="box style2">
-							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR"  width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
+						<article style="padding: 0; min-width: 300px; min-height:250px" class="box style2">
+							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
 						</article>
 					</div>
 					<div class="4u 12u(mobile)">
-						<article style="padding: 0; min-width: 300px; min-height:250px " class="box style2">
-							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR"  width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
+						<article style="padding: 0; min-width: 300px; min-height:250px" class="box style2">
+							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
 						</article>
 					</div>
 					<div class="4u 12u(mobile)">
-						<article style="padding: 0; min-width: 300px; min-height:250px " class="box style2">
-							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR"  width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
+						<article style="padding: 0; min-width: 300px; min-height:250px" class="box style2">
+							<iframe src="http://ads.lomadee.com/as/iframeContent.html?mdsrc=35704399&si=33887301&pu=22740436&c=BR" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" frameSpacing="0" scrolling="no" noresize="noresize"> </iframe>
 						</article>
 					</div>
 
 
-<!-- LOMADEE - END -->
-					
+					<!-- LOMADEE - END -->
+
 				</div>
 			</div>
 		</article>
@@ -277,13 +279,13 @@
 									<span ng-show="feed.email.$invalid && !feed.email.$pristine" style="color: #d62d20">Use um email válido.</span>
 								</div>
 
-								<div class="12u ">
-									<strong style="color: #008744 " ng-show="enviado==='sim'">Email cadastrado com sucesso!</strong>
-									<strong style="color: #d62d20 " ng-show="enviado==='erro'">Erro ao enviar mensagem!</strong>
-									<strong style="color: #d62d20 " ng-show="enviado==='inv'">Erro no formulário!</strong>
+								<div class="12u">
+									<strong style="color: #008744" ng-show="enviado==='sim'">Email cadastrado com sucesso!</strong>
+									<strong style="color: #d62d20" ng-show="enviado==='erro'">Erro ao enviar mensagem!</strong>
+									<strong style="color: #d62d20" ng-show="enviado==='inv'">Erro no formulário!</strong>
 								</div>
 
-								<ul class="12u 12u(mobile) actions ">
+								<ul class="12u 12u(mobile) actions">
 									<li><input type="submit" value="Enviar" />
 								</ul>
 							</div>
@@ -333,27 +335,27 @@
 						<span ng-show="contato.email.$invalid && !contato.email.$pristine" style="color: #d62d20">Use um email válido.</span>
 					</div>
 				</div>
-				<div class="row ">
-					<div style="width: 100%; " class="12u 12u(mobile) ">
+				<div class="row">
+					<div style="width: 100%;" class="12u 12u(mobile)">
 						<textarea ng-model="data.message" name="message" placeholder="Mensagem" ng-minlength="10" ng-maxlength="1000" required></textarea>
-						<span ng-show="contato.message.$error.minlength" style="color: #d62d20 ">Mensagem muito curta (Min. 10).</span>
-						<span ng-show="contato.message.$error.maxlength" style="color: #d62d20 ">Mensagem muito longa (Max. 1000).</span>
+						<span ng-show="contato.message.$error.minlength" style="color: #d62d20">Mensagem muito curta (Min. 10).</span>
+						<span ng-show="contato.message.$error.maxlength" style="color: #d62d20">Mensagem muito longa (Max. 1000).</span>
 					</div>
 				</div>
-				<div class="row ">
+				<div class="row">
 
-					<div style="width: 100%; " class="12u ">
-						<strong style="color: #008744 " ng-show="enviado==='sim'">Mensagem enviada com sucesso!</strong>
-						<strong style="color: #d62d20 " ng-show="enviado==='erro'">Erro ao enviar mensagem!</strong>
-						<strong style="color: #d62d20 " ng-show="enviado==='inv'">Erro no formulário!</strong>
+					<div style="width: 100%;" class="12u">
+						<strong style="color: #008744" ng-show="enviado==='sim'">Mensagem enviada com sucesso!</strong>
+						<strong style="color: #d62d20" ng-show="enviado==='erro'">Erro ao enviar mensagem!</strong>
+						<strong style="color: #d62d20" ng-show="enviado==='inv'">Erro no formulário!</strong>
 					</div>
 
 				</div>
-				<div class="row ">
+				<div class="row">
 
-					<ul style="width: 100%; " class="12u 12u(mobile) actions ">
+					<ul style="width: 100%;" class="12u 12u(mobile) actions">
 						<li><input type="submit" value="Enviar" /></li>
-						<li><input type="reset" value="Limpar" class="alt " /></li>
+						<li><input type="reset" value="Limpar" class="alt" /></li>
 					</ul>
 
 				</div>
@@ -361,29 +363,29 @@
 			</form>
 
 
-			<!--<div class="row ">
-					<div class="12u ">
+			<!--<div class="row">
+					<div class="12u">
 						<hr />
 						<h3>Find me on ...</h3>
-						<ul class="social ">
-							<li><a href="# " class="icon fa-twitter "><span class="label ">Twitter</span></a></li>
-							<li><a href="# " class="icon fa-facebook "><span class="label ">Facebook</span></a></li>
-							<li><a href="# " class="icon fa-dribbble "><span class="label ">Dribbble</span></a></li>
-							<li><a href="# " class="icon fa-linkedin "><span class="label ">LinkedIn</span></a></li>
-							<li><a href="# " class="icon fa-tumblr "><span class="label ">Tumblr</span></a></li>
-							<li><a href="# " class="icon fa-google-plus "><span class="label ">Google+</span></a></li>
-							<li><a href="# " class="icon fa-github "><span class="label ">Github</span></a></li>
+						<ul class="social">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
+							<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
 
 							</ul>
 							<hr />
 					</div>-->
 
 			<footer>
-				<ul id="copyright ">
+				<ul id="copyright">
 					<li>&copy; Droid.GO. All rights reserved.</li>
-					<li>Design: <a href="http://html5up.net ">HTML5 UP</a></li>
-					<li><img src="http://hitwebcounter.com/counter/counter.php?page=6534764&style=0038&nbdigits=9&type=page&initCount=0" title="Counter for Facebook Testes "
-							Alt="Facebook Testes " border="0 "></li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li><img src="http://hitwebcounter.com/counter/counter.php?page=6534764&style=0038&nbdigits=9&type=page&initCount=0" title="Counter for Facebook Testes"
+							Alt="Facebook Testes" border="0"></li>
 				</ul>
 			</footer>
 		</article>
@@ -391,55 +393,52 @@
 
 
 
-	<div id="mantra2017 " style="display: none; font-family: sans-serif; " class="mantra2017 ">
-		<div class="row " style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
-			<div style="margin: 0; padding: 0; font-size: 25px; float: none; ">
+	<div id="mantra2017" style="display: none; font-family: sans-serif;" class="mantra2017">
+		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center;">
+			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
 
-				<p style="margin: 0; "><strong style="color: white; ">{{pergunta}}</strong></p>
+				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
 			</div>
 		</div>
-		<div class="row " style="width: 600px; height: 255px; margin: 0; padding: 0 ">
-			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px ">
-				<span class="image fit "><img id="img-perfil " style="width: 180px; height: 180px; border-radius: 90px " ng-src="{{user.picture}}
-							" alt=" " /></span>
+		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
+			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px">
+				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
 			</div>
-			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px ">
-				<header class="borda-2px " style="margin: 0 15px 30px 0; ">
-					<h1 style="text-align: center; margin: 0 "><strong style="font-size: 30px; ">{{desc1}}</strong></h1>
+			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px">
+				<header class="borda-2px" style="margin: 0 15px 30px 0;">
+					<h1 style="text-align: center; margin: 0"><strong style="font-size: 30px;">{{desc1}}</strong></h1>
 				</header>
-				<div class="borda-2px " style="font-size: 20px;text-align: left; margin-right: -20px; ">
-					<p style="padding: 0; margin: 0 ">{{desc2}}</p>
+				<div class="borda-2px" style="font-size: 20px;text-align: left; margin-right: -20px;">
+					<p style="padding: 0; margin: 0">{{desc2}}</p>
 				</div>
 			</div>
 		</div>
-		<div class="row " style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
-			<p style="margin: 0; padding: 0; font-size: 15px; float: none; "><strong style="color: white;
-							">Este e outros testes em <span style="color: #3B5998 ">www.facebooktestes.com.br</span></strong></p>
+		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center;">
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;
+							">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
 		</div>
 	</div>
 
-	<div id="lemavida " style="display: none; font-family: sans-serif; " class="lemavida ">
-		<div class="row " style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
-			<div style="margin: 0; padding: 0; font-size: 25px; float: none; ">
+	<div id="lemavida" style="display: none; font-family: sans-serif;" class="lemavida">
+		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center;">
+			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
 
-				<p style="margin: 0; "><strong style="color: white; ">{{pergunta}}</strong></p>
+				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
 			</div>
 		</div>
-		<div class="row " style="width: 600px; height: 255px; margin: 0; padding: 0 ">
-			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px ">
-				<span class="image fit "><img id="img-perfil " style="width: 180px; height: 180px; border-radius: 90px " ng-src="{{user.picture}}
-							" alt=" " /></span>
+		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
+			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px">
+				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
 			</div>
-			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px ">
-				<div class="borda-2px " style="font-size: 20px;text-align: left; margin-right: 10px; ">
-					<p style="padding: 0; margin: 0 ">{{desc1}}</p>
-					<p style="padding: 0; margin: 0; text-align: right; "> - {{desc2}}</p>
+			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px">
+				<div class="borda-2px" style="font-size: 20px;text-align: left; margin-right: 10px;">
+					<p style="padding: 0; margin: 0">{{desc1}}</p>
+					<p style="padding: 0; margin: 0; text-align: right;"> - {{desc2}}</p>
 				</div>
 			</div>
 		</div>
-		<div class="row " style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
-			<p style="margin: 0; padding: 0; font-size: 15px; float: none; "><strong style="color: white;
-							">Este e outros testes em <span style="color: #3B5998 ">www.facebooktestes.com.br</span></strong></p>
+		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center;">
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
 		</div>
 	</div>
 
