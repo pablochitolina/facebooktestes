@@ -9,8 +9,20 @@
     $scope.mostraOverlay = false; //----
     $scope.logadoFace = false;
     $scope.nomeUser = 'Desconhecido';
+    $scope.ofertas = {};
 
     $scope.larguraOverlay = innerWidth + 'px';
+
+
+    $http.get('/api/getOfertasLomadee')
+        .success(function (data, status, headers, config) {
+            
+            $scope.ofertas = data.ofertas;
+        })
+        .error(function (data, status, headers, config) {
+
+            console.log(data.message)
+        });
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;
@@ -309,30 +321,31 @@
 
         });
     }
-$scope.enviado = 'nao';
-    $scope.enviaMsg = function(valid, tipo){
+    $scope.enviado = 'nao';
+    $scope.enviaMsg = function (valid, tipo) {
 
-                $scope.enviado = 'nao';
-                if(valid){
-                    $http.post('/api/postmessage/',{
-                        name: $scope.data.nome,
-                        email: $scope.data.email,
-                        tipo: tipo,
-                        message: $scope.data.message})
-                    .success(function (data) {
-                        if(data.message === 'success'){
-                            $scope.enviado = 'sim';
-                        }else{
-                            $scope.enviado = 'erro';
-                        }
-                    })
-                    .error(function (data) {
+        $scope.enviado = 'nao';
+        if (valid) {
+            $http.post('/api/postmessage/', {
+                name: $scope.data.nome,
+                email: $scope.data.email,
+                tipo: tipo,
+                message: $scope.data.message
+            })
+                .success(function (data) {
+                    if (data.message === 'success') {
+                        $scope.enviado = 'sim';
+                    } else {
                         $scope.enviado = 'erro';
-                    });
-                }else{
-                    $scope.enviado = 'inv';
-                }
-            }
+                    }
+                })
+                .error(function (data) {
+                    $scope.enviado = 'erro';
+                });
+        } else {
+            $scope.enviado = 'inv';
+        }
+    }
 
 });
 
