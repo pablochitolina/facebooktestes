@@ -9,11 +9,11 @@
     $scope.mostraOverlay = false; //----
     $scope.logadoFace = false;
     $scope.nomeUser = 'Desconhecido';
-    $scope.ofertas = {};
+    
 
     $scope.larguraOverlay = innerWidth + 'px';
-
-
+/*
+$scope.ofertas = {};
     $http.get('/api/getOfertasLomadee')
         .success(function (data, status, headers, config) {
             
@@ -23,6 +23,7 @@
 
             console.log(data.message)
         });
+        */
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;

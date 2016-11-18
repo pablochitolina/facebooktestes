@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ngRoute', 'duScroll', 'angularModalService']);//'angular-google-adsense'
+var app = angular.module('starter', ['ngRoute', 'duScroll', 'angularModalService', 'ngLoadScript']);//'angular-google-adsense'
 
 app.service('User', function () {
 
@@ -46,11 +46,11 @@ app.config(function ($routeProvider) {
 });
 
 app.directive('googleAdsenseUm', [//banner 1 resp
-  '$timeout', function($timeout) {
+  '$timeout', function ($timeout) {
     return {
       restrict: 'A',
-      link: function(scope, element, attr) {
-        return $timeout(function() {
+      link: function (scope, element, attr) {
+        return $timeout(function () {
           var adsbygoogle, html;
           html = "<ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8832799678197868' data-ad-slot='5421662634'></ins>";
           $(element).append(html);
@@ -64,11 +64,11 @@ app.directive('googleAdsenseUm', [//banner 1 resp
 
 
 app.directive('googleAdsenseDois', [ // com tam fixo
-  '$timeout', function($timeout) {
+  '$timeout', function ($timeout) {
     return {
       restrict: 'A',
-      link: function(scope, element, attr) {
-        return $timeout(function() {
+      link: function (scope, element, attr) {
+        return $timeout(function () {
           var adsbygoogle, html, rand2;
           rand2 = Math.random();
           html = "<ins class='adsbygoogle' style='display:inline-block;width:300px;height:250px' data-ad-client='ca-pub-8832799678197868' data-ad-slot='9123505437' data-ad-region='page-" + rand2 + "'></ins>";
@@ -82,11 +82,11 @@ app.directive('googleAdsenseDois', [ // com tam fixo
 ]);
 
 app.directive('googleAd', [
-  '$timeout', function($timeout) {
+  '$timeout', function ($timeout) {
     return {
       restrict: 'A',
-      link: function(scope, element, attr) {
-        return $timeout(function() {
+      link: function (scope, element, attr) {
+        return $timeout(function () {
           var adsbygoogle, html, rand;
           rand = Math.random();
           html = "<ins class='adsbygoogle' style='display:inline-block;width:300px;height:250px' data-ad-client='ca-pub-3199660652950290' data-ad-slot='6259591966'></ins>";
@@ -98,17 +98,55 @@ app.directive('googleAd', [
   }
 ]);
 
+app.directive('lomadee', [
+  '$timeout', function ($timeout) {
+    return {
+      restrict: 'A',
+      link: function (scope, element, attr) {
+        return $timeout(function () {
+          var  html;
+          console.log('append')
+          html = '<script src="http://image.lomadee.com/js/ad_lomadee.js" type="text/javascript"></script>';
+          $(element).append(html);   
+        });
+      }
+    };
+  }
+]);
+
 
 
 // '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3199660652950290" data-ad-slot="6259591966"></ins>'
 //8832799678197868
 //9123505437
-app.directive('ads', function() {
-    return {
-        restrict: 'A',
-        template: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3199660652950290" data-ad-slot="6259591966" data-ad-format="auto"></ins>',
-        controller: function(){
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        }
-    };
+app.directive('ads', function () {
+  return {
+    restrict: 'A',
+    template: '<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3199660652950290" data-ad-slot="6259591966" data-ad-format="auto"></ins>',
+    controller: function () {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  };
 });
+
+/*global angular */
+(function (ng) {
+  'use strict';
+
+  var app = ng.module('ngLoadScript', []);
+
+  app.directive('script', function() {
+    return {
+      restrict: 'E',
+      scope: false,
+      link: function(scope, elem, attr) {
+        if (attr.type=='text/javascript-lazy') {
+          var code = elem.text();
+          var f = new Function(code);
+          f();
+        }
+      }
+    };
+  });
+
+}(angular));

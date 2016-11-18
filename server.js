@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost:27017/facequiz');
 var bodyParser = require('body-parser');
 var userController = require('./controllers/user');
 var testeController = require('./controllers/teste');
+var ofertasController = require('./controllers/ofertas');
 var app = express();
 var router = express.Router();
 var proxy = require('html2canvas-proxy');
@@ -61,6 +62,11 @@ router.route('/getUsers')
 
   router.route('/getContacts')
   .get(userController.getContacts);
+
+    router.route('/postOfertasLomadee')
+  .post(ofertasController.postOfertasLomadee);
+    router.route('/getOfertasLomadee')
+  .get(ofertasController.getOfertasLomadee);
 
 router.route('/postTesteResult')
   .post(userController.postTesteResult);
