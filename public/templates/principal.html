@@ -54,6 +54,7 @@
 			<li><a href="#top" du-smooth-scroll>Topo</a></li>
 			<!--<li><a href="#work" du-smooth-scroll>Especiais para você</a></li>
 			<li><a href="#ofertas" du-smooth-scroll>Ofertas</a></li>-->
+			<li><a href="#acompanhe" du-smooth-scroll>Acompanhe</a></li>
 			<li><a href="#portfolio" du-smooth-scroll>Todos os testes</a></li>
 			<li><a href="#contact" du-smooth-scroll>Contato</a></li>
 		</ul>
@@ -132,7 +133,7 @@
 		</article>
 	</div>-->
 
-<adsense ad-client="ca-pub-8832799678197868" ad-slot="5421662634" inline-style="display:block" ad-format="auto"></adsense>
+	<adsense ad-client="ca-pub-8832799678197868" ad-slot="5421662634" inline-style="display:block" ad-format="auto"></adsense>
 	<!-- Portfolio -->
 	<div id="portfolio" class="wrapper style3">
 		<article>
@@ -189,8 +190,57 @@
 
 
 	</div>
+	<div id="acompanhe"  class="wrapper style2">
+		<article >
+			<header style="margin: 0">
+				<h2>Acompanhe</h2>
+				<p>Assine o nosso e receba em primeira mão toda vez que postarmos um novo teste ou curta nossa página para ficar por dentro de todas as nossas novidades.</p>
+			</header>
+			
+			<div class="container">
+				<div style="padding: 0; margin: 0;" class="row">
+					<div style="padding: 0; margin: 0;" class="6u 12u(mobile)">
+						<header style="margin: 0">
+							<h2>Feed</h2>
+						</header>
+					
+						<iframe name="voltarF" style="display:none;"></iframe>
+						<form method="post" name="feed" novalidate ng-submit="enviaMsg(feed.$valid, 'feed')" target="voltarF">
+							<div style="padding: 0; margin: 0;" class="row">
+								<div style="width: 100%;" class="12u 12u(mobile)">
+									<input style="border: none; background: #282828;" type="email" name="email" ng-model="data.email" placeholder="Email" required>
+									<span ng-show="feed.email.$invalid && !feed.email.$pristine" style="color: #d62d20">Use um email válido.</span>
+								</div>
 
-	<!--<div id="ofertas" class="wrapper style2">
+								<div class="12u ">
+									<strong style="color: #008744 " ng-show="enviado==='sim'">Email cadastrado com sucesso!</strong>
+									<strong style="color: #d62d20 " ng-show="enviado==='erro'">Erro ao enviar mensagem!</strong>
+									<strong style="color: #d62d20 " ng-show="enviado==='inv'">Erro no formulário!</strong>
+								</div>
+
+								<ul class="12u 12u(mobile) actions ">
+									<li><input type="submit" value="Enviar" />
+								</ul>
+							</div>
+						</form>
+					</div>
+					<div style="padding: 0; margin: 0;" class="6u 12u(mobile)">
+						<header style="margin: 0">
+							<h2>Curta</h2>
+						</header>
+						
+						<div class="fb-page" data-href="https://www.facebook.com/testesdivertidosparacompartilhar" data-small-header="false" data-adapt-container-width="true"
+							data-hide-cover="false" data-show-facepile="true">
+							<blockquote cite="https://www.facebook.com/testesdivertidosparacompartilhar" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/testesdivertidosparacompartilhar">Testes Divertidos</a></blockquote>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+	<!--
+	<div id="ofertas" class="wrapper style2">
 		<article>
 			<header>
 				<h2>Ofertas</h2>
@@ -201,57 +251,60 @@
 				<div class="row">
 					<div class="12u 12u(mobile)">
 						<article style="padding: 0;" class="box style2">
-							
-							
-
-						</article>
-					</div>
-					<div class="6u 12u(mobile)">
-						<article style="padding: 0;" class="box style2">
 							<div google-adsense-dois=""></div>
 						</article>
 					</div>
 				</div>
 			</div>
 		</article>
-	</div>-->
+	</div>
 
-	
+	-->
 
 	<!-- Contact -->
 	<div id="contact" class="wrapper style4">
+
 		<article class="container 75%">
 			<header>
 				<h2>Ajude-nos a sermos melhores para você.</h2>
 				<p>Dicas. Criticas. Solicitar testes. Aqui é o lugar para isso!</p>
 			</header>
 
-
-			<form method="post" action="#">
+			<iframe name="voltar" style="display:none;"></iframe>
+			<form method="post" name="contato" novalidate ng-submit="enviaMsg(contato.$valid, 'email')" target="voltar">
 
 				<div class="row">
 					<div style="width: 100%;" class="6u 12u(mobile)">
-						<input type="text" name="name" id="name" placeholder="Nome" />
+						<input type="text" ng-model="data.nome" name="nome" placeholder="Nome" ng-minlength="2" ng-maxlength="15" required>
+						<span ng-show="contato.nome.$error.minlength" style="color: #d62d20">Nome muito curto (Min. 2).</span>
+						<span ng-show="contato.nome.$error.maxlength" style="color: #d62d20">Nome muito longo (Max. 15).</span>
 					</div>
 					<div style="width: 100%;" class="6u 12u(mobile)">
-						<input type="text" name="email" id="email" placeholder="Email" />
+						<input style="border: none; background: #282828;" type="email" name="email" ng-model="data.email" placeholder="Email" required>
+						<span ng-show="contato.email.$invalid && !contato.email.$pristine" style="color: #d62d20">Use um email válido.</span>
 					</div>
 				</div>
-				<div class="row">
-					<div style="width: 100%;" class="12u 12u(mobile)">
-						<input type="text" name="subject" id="subject" placeholder="Assunto" />
+				<div class="row ">
+					<div style="width: 100%; " class="12u 12u(mobile) ">
+						<textarea ng-model="data.message" name="message" placeholder="Mensagem" ng-minlength="10" ng-maxlength="1000" required></textarea>
+						<span ng-show="contato.message.$error.minlength" style="color: #d62d20 ">Mensagem muito curta (Min. 10).</span>
+						<span ng-show="contato.message.$error.maxlength" style="color: #d62d20 ">Mensagem muito longa (Max. 1000).</span>
 					</div>
 				</div>
-				<div class="row">
-					<div style="width: 100%;" class="12u 12u(mobile)">
-						<textarea name="message" id="message" placeholder="Mensagem"></textarea>
-					</div>
-				</div>
-				<div class="row">
+				<div class="row ">
 
-					<ul style="width: 100%;" class="12u 12u(mobile) actions">
+					<div style="width: 100%; " class="12u ">
+						<strong style="color: #008744 " ng-show="enviado==='sim'">Mensagem enviada com sucesso!</strong>
+						<strong style="color: #d62d20 " ng-show="enviado==='erro'">Erro ao enviar mensagem!</strong>
+						<strong style="color: #d62d20 " ng-show="enviado==='inv'">Erro no formulário!</strong>
+					</div>
+
+				</div>
+				<div class="row ">
+
+					<ul style="width: 100%; " class="12u 12u(mobile) actions ">
 						<li><input type="submit" value="Enviar" /></li>
-						<li><input type="reset" value="Limpar" class="alt" /></li>
+						<li><input type="reset" value="Limpar" class="alt " /></li>
 					</ul>
 
 				</div>
@@ -259,81 +312,85 @@
 			</form>
 
 
-			<!--<div class="row">
-					<div class="12u">
+			<!--<div class="row ">
+					<div class="12u ">
 						<hr />
 						<h3>Find me on ...</h3>
-						<ul class="social">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
-							<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<ul class="social ">
+							<li><a href="# " class="icon fa-twitter "><span class="label ">Twitter</span></a></li>
+							<li><a href="# " class="icon fa-facebook "><span class="label ">Facebook</span></a></li>
+							<li><a href="# " class="icon fa-dribbble "><span class="label ">Dribbble</span></a></li>
+							<li><a href="# " class="icon fa-linkedin "><span class="label ">LinkedIn</span></a></li>
+							<li><a href="# " class="icon fa-tumblr "><span class="label ">Tumblr</span></a></li>
+							<li><a href="# " class="icon fa-google-plus "><span class="label ">Google+</span></a></li>
+							<li><a href="# " class="icon fa-github "><span class="label ">Github</span></a></li>
 
 							</ul>
 							<hr />
 					</div>-->
 
 			<footer>
-				<ul id="copyright">
+				<ul id="copyright ">
 					<li>&copy; Droid.GO. All rights reserved.</li>
-					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					<li><img src="http://hitwebcounter.com/counter/counter.php?page=6534764&style=0038&nbdigits=9&type=page&initCount=0" title="Counter for Facebook Testes"
-							Alt="Facebook Testes" border="0"></li>
+					<li>Design: <a href="http://html5up.net ">HTML5 UP</a></li>
+					<li><img src="http://hitwebcounter.com/counter/counter.php?page=6534764&style=0038&nbdigits=9&type=page&initCount=0
+							" title="Counter for Facebook Testes " Alt="Facebook Testes " border="0 "></li>
 				</ul>
 			</footer>
 		</article>
 	</div>
 
-	 
 
-	<div id="mantra2017" style="display: none; font-family: sans-serif;" class="mantra2017">
-		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
-			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
 
-				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
+	<div id="mantra2017 " style="display: none; font-family: sans-serif; " class="mantra2017 ">
+		<div class="row " style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
+			<div style="margin: 0; padding: 0; font-size: 25px; float: none; ">
+
+				<p style="margin: 0; "><strong style="color: white; ">{{pergunta}}</strong></p>
 			</div>
 		</div>
-		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
-			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px">
-				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
+		<div class="row " style="width: 600px; height: 255px; margin: 0; padding: 0 ">
+			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px ">
+				<span class="image fit "><img id="img-perfil " style="width: 180px; height: 180px; border-radius: 90px " ng-src="{{user.picture}}
+							" alt=" " /></span>
 			</div>
-			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px">
-				<header class="borda-2px" style="margin:  0 15px 30px 0;">
-					<h1 style="text-align: center; margin: 0"><strong style="font-size: 30px;">{{desc1}}</strong></h1>
+			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px ">
+				<header class="borda-2px " style="margin: 0 15px 30px 0; ">
+					<h1 style="text-align: center; margin: 0 "><strong style="font-size: 30px; ">{{desc1}}</strong></h1>
 				</header>
-				<div class="borda-2px" style="font-size: 20px;text-align: left; margin-right: -20px;">
-					<p style="padding: 0; margin: 0">{{desc2}}</p>
+				<div class="borda-2px " style="font-size: 20px;text-align: left; margin-right: -20px; ">
+					<p style="padding: 0; margin: 0 ">{{desc2}}</p>
 				</div>
 			</div>
 		</div>
-		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
-			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
+		<div class="row " style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none; "><strong style="color: white;
+							">Este e outros testes em <span style="color: #3B5998 ">www.facebooktestes.com.br</span></strong></p>
 		</div>
 	</div>
 
-	<div id="lemavida" style="display: none; font-family: sans-serif;" class="lemavida">
-		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
-			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
+	<div id="lemavida " style="display: none; font-family: sans-serif; " class="lemavida ">
+		<div class="row " style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center; ">
+			<div style="margin: 0; padding: 0; font-size: 25px; float: none; ">
 
-				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
+				<p style="margin: 0; "><strong style="color: white; ">{{pergunta}}</strong></p>
 			</div>
 		</div>
-		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
-			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px">
-				<span class="image fit"><img id="img-perfil" style="width: 180px; height: 180px; border-radius: 90px" ng-src="{{user.picture}}" alt="" /></span>
+		<div class="row " style="width: 600px; height: 255px; margin: 0; padding: 0 ">
+			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px ">
+				<span class="image fit "><img id="img-perfil " style="width: 180px; height: 180px; border-radius: 90px " ng-src="{{user.picture}}
+							" alt=" " /></span>
 			</div>
-			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px">
-				<div class="borda-2px" style="font-size: 20px;text-align: left; margin-right: 10px;">
-					<p style="padding: 0; margin: 0">{{desc1}}</p>
-					<p style="padding: 0; margin: 0; text-align: right;"> - {{desc2}}</p>
+			<div style="margin: 10px 0 0 20px; padding: 0; width: 400px ">
+				<div class="borda-2px " style="font-size: 20px;text-align: left; margin-right: 10px; ">
+					<p style="padding: 0; margin: 0 ">{{desc1}}</p>
+					<p style="padding: 0; margin: 0; text-align: right; "> - {{desc2}}</p>
 				</div>
 			</div>
 		</div>
-		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
-			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
+		<div class="row " style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center; ">
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none; "><strong style="color: white;
+							">Este e outros testes em <span style="color: #3B5998 ">www.facebooktestes.com.br</span></strong></p>
 		</div>
 	</div>
 

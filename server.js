@@ -53,8 +53,14 @@ router.route('/postUser')
 
 //router.route('/addTestUser').post(userController.addTestUser);
 
+  router.route('/postmessage')
+  .post(userController.postMessage);
+
 router.route('/getUsers')
   .get(userController.getUsers);
+
+  router.route('/getContacts')
+  .get(userController.getContacts);
 
 router.route('/postTesteResult')
   .post(userController.postTesteResult);

@@ -10,7 +10,7 @@
     $scope.logadoFace = false;
     $scope.nomeUser = 'Desconhecido';
 
-    $scope.larguraOverlay = window.innerWidth + 'px';
+    $scope.larguraOverlay = innerWidth + 'px';
 
     if ($routeParams.teste != undefined) {
         $scope.temTeste = true;
@@ -132,6 +132,8 @@
             else { }
         });
     }
+
+
 
     function salvaImagem(nomeTeste) {
 
@@ -307,6 +309,30 @@
 
         });
     }
+$scope.enviado = 'nao';
+    $scope.enviaMsg = function(valid, tipo){
+
+                $scope.enviado = 'nao';
+                if(valid){
+                    $http.post('/api/postmessage/',{
+                        name: $scope.data.nome,
+                        email: $scope.data.email,
+                        tipo: tipo,
+                        message: $scope.data.message})
+                    .success(function (data) {
+                        if(data.message === 'success'){
+                            $scope.enviado = 'sim';
+                        }else{
+                            $scope.enviado = 'erro';
+                        }
+                    })
+                    .error(function (data) {
+                        $scope.enviado = 'erro';
+                    });
+                }else{
+                    $scope.enviado = 'inv';
+                }
+            }
 
 });
 

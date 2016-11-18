@@ -1,8 +1,13 @@
 // Load required packages
 var User = require('../models/user');
+var Contact = require('../models/contact');
 var UserAdmin = require('../models/useradmin');
 var Teste = require('../models/teste');
 var fs = require("fs");
+
+var nodemailer = require("nodemailer");
+
+var transporter = nodemailer.createTransport('smtps://sagespmailer%40gmail.com:090219sagesp@smtp.gmail.com')
 
 //Cria novo usuario e envia token de ativação
 /*exports.postUserAdmin = function (req, res) {
@@ -118,6 +123,70 @@ exports.postTesteResult = function (req, res) {
 
 };
 
+exports.postMessage = function (req, res) {
+  if (req.body.tipo === 'email') {
+
+    Contact.findOne({ email: req.body.email }, function (err, contact) {
+      if (err)
+        return res.send(err);
+      if (!contact) {
+
+        var contactNew = new Contact({
+
+          email: req.body.email,
+          name: req.body.name
+
+        });
+
+        contactNew.save();
+
+      }
+
+    });
+
+
+    var name = req.body.name;
+    var email = req.body.email;
+    var message = req.body.message;
+    // setup e-mail data with unicode symbols
+    var mailOptions = {
+      from: email, // sender address
+      to: "pablochitolina@gmail.com", // list of receivers
+      subject: "Contato FBT", // Subject line
+      html: "<p>Email: " + email + "</p><p>Nome: " + name + "</p><p>Mensagem: " + message + "</p>" // html body
+
+    }
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return console.log(error);
+      }
+    });
+
+
+  } else {
+    Contact.findOne({ email: req.body.email }, function (err, contact) {
+      if (err)
+        return res.send(err);
+      if (!contact) {
+
+        var contactNew = new Contact({
+
+          email: req.body.email,
+          name: 'FeedFBT'
+
+        });
+
+        contactNew.save();
+
+      }
+
+    });
+  }
+  res.json({ message: 'success' });
+};
+
 
 exports.postImg = function (req, res) {
 
@@ -149,6 +218,34 @@ exports.getImagem = function (req, res) {
     if (err) {
       console.log(err);
       res.status(err.status).end();
+    }
+
+  });
+
+};
+
+exports.getContacts = function (req, res) {
+
+  //console.log(req.headers.email)
+
+  UserAdmin.findOne({ email: req.headers.email }, function (err, userSeguro) {
+    if (err)
+      return res.send(err);
+    if (!userSeguro)
+      return res.json({ message: 'notauthorized' });
+
+    if (userSeguro.id === req.headers.id) {
+
+      Contact.find({}, function (err, contacts) {
+        if (err)
+          return res.send(err);
+
+        return res.json({ message: 'contacts', contacts: contacts });
+
+      });
+
+    } else {
+      return res.json({ message: 'notauthorized' });
     }
 
   });
