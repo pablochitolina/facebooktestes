@@ -53,9 +53,11 @@ $scope.ofertas = {};
     $scope.desc2 = '';
     $scope.desc3 = '';
     $scope.desc4 = '';
+    var testeWait = '';
 
     $scope.calculaTeste = function (teste) {
         if ($scope.logadoFace) {
+            testeWait = '';
             $scope.etapa = 'Enviando informações...';
             $scope.mostraOverlay = true;
 
@@ -115,7 +117,9 @@ $scope.ofertas = {};
                 $scope.mostraShare = false;
             });
         } else {
-            $window.alert('Você deve logar na sua conta do Facebook para realizar os testes!');
+            testeWait = teste;
+            $scope.loginFace();
+            //$window.alert('Você deve logar na sua conta do Facebook para realizar os testes!');
         }
 
 
@@ -312,6 +316,11 @@ $scope.ofertas = {};
             }).then(function (res) {
                 //console.log(res.data.message);
                 $scope.logadoFace = true;
+                if(testeWait !== ''){
+
+                    $scope.calculaTeste(testeWait);
+
+                }
             }, function (err) {
                 // Error
                 $window.alert('Ocorreu algum erro ao logar!');
