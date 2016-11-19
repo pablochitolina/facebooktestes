@@ -265,7 +265,7 @@ exports.getUsers = function (req, res) {
 
     if (userSeguro.id === req.headers.id) {
 
-      User.find({}).select('email').select('nome').exec( function (err, users) {
+      User.find({}).select('email').select('name').exec( function (err, users) {
         if (err)
           return res.send(err);
 
