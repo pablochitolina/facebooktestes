@@ -139,7 +139,7 @@ $scope.ofertas = {};
             link: 'http://www.facebooktestes.com.br/#/principal/' + $scope.testeSelecionado,
             caption: 'www.facebooktestes.com.br',
             picture: 'http://www.facebooktestes.com.br/api/imagem/' + $scope.user.idUserFB + '_' + $scope.testeSelecionado + '.png',
-            description: $scope.resumo + '. Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
+            description: $scope.resumo + ' Venha se divertir e fazer este e vários outros testes que preparamos cuidadosamente para você!'
         }, function (response) {
             if (response && response.post_id) { }
             else { }
@@ -250,11 +250,11 @@ $scope.ofertas = {};
     // This function is called when someone finishes with the Login
     // Button.  See the onlogin handler attached to it in the sample
     // code below.
-    function checkLoginState() {
-        FB.getLoginStatus(function (response) {
-            statusChangeCallback(response);
-        });
-    }
+    //function checkLoginState() {
+       // FB.getLoginStatus(function (response) {
+            //statusChangeCallback(response);
+       // });
+   // }
 
     window.fbAsyncInit = function () {
         FB.init({
@@ -268,7 +268,6 @@ $scope.ofertas = {};
         FB.getLoginStatus(function (response) {
             statusChangeCallback(response);
         });
-
     };
 
     // Load the SDK asynchronously
