@@ -139,6 +139,12 @@
 	height: 315px;
 }
 
+.pokemon{
+	background-image: url("../../images/back3.jpg");
+	width: 600px;
+	height: 315px;
+}
+
 .borda-2px {
 	text-shadow:#fff 1px -1px 5px, #fff -1px 1px 5px, #fff 1px 1px 5px, #fff -1px -1px 5px;
 	font-size: 40px;

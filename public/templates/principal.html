@@ -208,6 +208,14 @@
 				<div class="row">
 					<div style="padding: 0" class="4u 12u(mobile)">
 						<section style="padding: 20px" class="box style1">
+							<img style="width: 100%;" src="/images/pokemon.png" alt="" /></span>
+							<p style="margin-top: 15px; margin-bottom: 15px;">Com este teste você vai descobrir qual Pokemon você seria.</p>
+							<a ng-click="calculaTeste('pokemon')" class="button medium scrolly">Iniciar o teste</a>
+						</section>
+					</div>
+
+					<div style="padding: 0" class="4u 12u(mobile)">
+						<section style="padding: 20px" class="box style1">
 							<img style="width: 100%;" src="/images/mantra2017.png" alt="" /></span>
 							<p style="margin-top: 15px; margin-bottom: 15px;">Teste para saber qual é o mantra que vai guiar seu caminho em 2017.</p>
 							<a ng-click="calculaTeste('mantra2017')" class="button medium scrolly">Iniciar o teste</a>
@@ -431,6 +439,33 @@
 					<p style="padding: 0; margin: 0; text-align: right;">{{desc2}}</p>
 				</div>
 			</div>
+		</div>
+		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center;">
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
+		</div>
+	</div>
+
+	<div id="pokemon" style="display: block; font-family: sans-serif;" class="pokemon">
+		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center;">
+			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
+
+				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
+			</div>
+		</div>
+		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
+			<div style="margin: 10px 0 0 10px; padding: 0; width: 170px">
+				<span class="image fit"><img id="img-perfil" style="width: 150px; height: 150px; border-radius: 75px" ng-src="{{user.picture}}" alt="" /></span>
+			</div>
+			<div style="padding: 0; width: 240px;height: 255px;display: flex;justify-content: center;flex-direction: column;">
+				<div class="borda-2px" style="font-size: 14px;text-align: center;">
+					<h3 style="font-size: 35px; color: orangered; padding: 0; margin: 0">{{desc1}}</h3>
+					<p style="padding: 0; margin: 0;">{{desc2}}</p>
+				</div>
+			</div>
+			<div style="float: right; margin: 10px 10px 0 0; padding: 0; width: 170px">
+				<span class="image fit"><img id="img-perfil" style="width: 150px; height: 150px; border-radius: 75px" ng-src="../../images/pokemon/{{desc1}}.png" alt="" /></span>
+			</div>
+			
 		</div>
 		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center;">
 			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
