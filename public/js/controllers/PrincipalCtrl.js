@@ -265,9 +265,9 @@ $scope.ofertas = {};
             version: 'v2.8' // use graph api version 2.5
         });
 
-        FB.getLoginStatus(function (response) {
-            statusChangeCallback(response);
-        });
+       // FB.getLoginStatus(function (response) {
+        //    statusChangeCallback(response);
+       // });
     };
 
     // Load the SDK asynchronously
