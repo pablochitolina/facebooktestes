@@ -145,6 +145,12 @@
 	height: 315px;
 }
 
+.letraamor{
+	background-image: url("../../images/back4.png");
+	width: 600px;
+	height: 315px;
+}
+
 .borda-2px {
 	text-shadow:#fff 1px -1px 5px, #fff -1px 1px 5px, #fff 1px 1px 5px, #fff -1px -1px 5px;
 	font-size: 40px;
@@ -156,6 +162,10 @@
 .borda {
 	color:#000; 
 	text-shadow:#fff 1px -1px, #fff -1px 1px, #fff 1px 1px, #fff -1px -1px;
+	}
+.borda2 {
+	color:#000; 
+	text-shadow:#fff 1px -2px, #fff -1px 2px, #fff 1px 2px, #fff -1px -2px;
 	}
 
 

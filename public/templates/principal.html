@@ -209,6 +209,13 @@
 				<div class="row">
 					<div style="padding: 0" class="4u 12u(mobile)">
 						<section style="padding: 20px" class="box style1">
+							<img style="width: 100%;" src="/images/letraamor.png" alt="" /></span>
+							<p style="margin-top: 15px; margin-bottom: 15px;">Este teste vai te dizer qual é a letra inicial do seu grande amor s2.</p>
+							<a ng-click="calculaTeste('letraamor')" class="button medium scrolly">Iniciar o teste</a>
+						</section>
+					</div>
+					<div style="padding: 0" class="4u 12u(mobile)">
+						<section style="padding: 20px" class="box style1">
 							<img style="width: 100%;" src="/images/pokemon.png" alt="" /></span>
 							<p style="margin-top: 15px; margin-bottom: 15px;">Com este teste você vai descobrir qual Pokemon você seria.</p>
 							<a ng-click="calculaTeste('pokemon')" class="button medium scrolly">Iniciar o teste</a>
@@ -222,6 +229,9 @@
 							<a ng-click="calculaTeste('mantra2017')" class="button medium scrolly">Iniciar o teste</a>
 						</section>
 					</div>
+				</div>
+				<div class="row">
+					
 
 					<div style="padding: 0" class="4u 12u(mobile)">
 						<section style="padding: 20px" class="box style1">
@@ -465,6 +475,30 @@
 			</div>
 			<div style="float: right; margin: 10px 10px 0 0; padding: 0; width: 170px">
 				<span class="image fit"><img id="img-perfil" style="width: 150px; height: 150px; border-radius: 75px" ng-src="../../images/pokemon/{{desc1}}.png" alt="" /></span>
+			</div>
+			
+		</div>
+		<div class="row" style="background-color: black; width: 600px; height: 25px; margin: 0; padding: 0; text-align: center;">
+			<p style="margin: 0; padding: 0; font-size: 15px; float: none;"><strong style="color: white;">Este e outros testes em <span style="color: #3B5998">www.facebooktestes.com.br</span></strong></p>
+		</div>
+	</div>
+
+	<div id="letraamor" style="display: block; font-family: sans-serif; position: relative" class="letraamor">
+		<div class="row" style="background-color: black; width: 600px; height: 35px; margin: 0; padding: 0; text-align: center;">
+			<img style="bottom: 0;left: 0;position: absolute;z-index: 12; padding: 0; margin: 0;" ng-src="../images/heart.png" alt="" />
+			<div style="margin: 0; padding: 0; font-size: 25px; float: none;">
+
+				<p style="margin: 0;"><strong style="color: white;">{{pergunta}}</strong></p>
+			</div>
+		</div>
+		<div class="row" style="width: 600px; height: 255px; margin: 0; padding: 0">
+			<div style="margin: 60px 0 0 50px; padding: 0; width: 170px">
+				<span class="image fit"><img id="img-perfil" style="width: 150px; height: 150px;" ng-src="{{user.picture}}" alt="" /></span>
+			</div>
+			<div style="padding: 0;width: 200px;float: right;margin: 75px 25px 0 0;;">
+				
+					<h3 class="borda2" style="padding: 0;margin: 0; font-size: 100px;text-align: center;">{{desc1}}</h3>
+				
 			</div>
 			
 		</div>
