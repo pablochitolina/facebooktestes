@@ -56,6 +56,7 @@ $scope.ofertas = {};
     var testeWait = '';
 
     $scope.calculaTeste = function (teste) {
+        $scope.larguraOverlay = innerWidth + 'px';
         if ($scope.logadoFace) {
             testeWait = '';
             $scope.etapa = 'Enviando informações...';
